@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Melt", "src\Melt\Melt.csproj", "{596E0CF9-8B6C-42CD-A387-34D6B1EE0D2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Melt.UnitTest", "test\Melt.UnitTest\Melt.UnitTest.csproj", "{31A9EB52-E1C2-48FE-83A0-789E543F16FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{596E0CF9-8B6C-42CD-A387-34D6B1EE0D2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{596E0CF9-8B6C-42CD-A387-34D6B1EE0D2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{596E0CF9-8B6C-42CD-A387-34D6B1EE0D2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{596E0CF9-8B6C-42CD-A387-34D6B1EE0D2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31A9EB52-E1C2-48FE-83A0-789E543F16FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31A9EB52-E1C2-48FE-83A0-789E543F16FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31A9EB52-E1C2-48FE-83A0-789E543F16FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31A9EB52-E1C2-48FE-83A0-789E543F16FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54A7BA34-F06E-46D4-93A1-72AFD6C4D406}
+	EndGlobalSection
+EndGlobal
