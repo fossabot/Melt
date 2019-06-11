@@ -22,10 +22,9 @@ namespace Melt.UnitTest
         [TestMethod]
         public void Type()
         {
-            var raw = ("").GetType();//typeof(int);
+            var raw = ("").GetType();
 
             byte[] bytes = p.Construct().Attach(raw);
-            Debug.WriteLine(bytes.ToHAString());
             var wrapped = p.Deconstruct(bytes).Detach<Type>(out int l);
             Assert.AreEqual(raw, wrapped);
             Assert.AreEqual(l, bytes.Length);

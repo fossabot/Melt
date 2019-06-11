@@ -6,9 +6,9 @@ namespace Melt
     using System.Linq;
     using System.Text;
 
-    public static class ByteArrayUtility
+    internal static class ByteArrayUtility
     {
-        private static StringBuilder Builder
+        private static StringBuilder s_builder
         {
             get
             {
@@ -25,19 +25,19 @@ namespace Melt
         /// </summary>
         /// <param name="bytes"></param>
         /// <returns></returns>
-        public static string ToHAString(this byte[] bytes)
+        internal static string ToHAString(this byte[] bytes)
         {
-            Builder.Clear();
-            Builder.Append("{ ");
-            Builder.Append(string.Join(", ", bytes.Select(x => "0x" + x.ToString("X2"))));
-            Builder.Append(" }");
+            s_builder.Clear();
+            s_builder.Append("{ ");
+            s_builder.Append(string.Join(", ", bytes.Select(x => "0x" + x.ToString("X2"))));
+            s_builder.Append(" }");
 
-            return Builder.ToString();
+            return s_builder.ToString();
         }
 
-        public static string ToHAString(this Construct c) => ((byte[])c).ToHAString();
+        internal static string ToHAString(this Construct c) => ((byte[])c).ToHAString();
 
-        public static List<byte> ConcatToList(this byte[] first, params byte[][] other)
+        internal static List<byte> ConcatToList(this byte[] first, params byte[][] other)
         {
             if (other == null && first == null)
                 throw new ArgumentNullException(nameof(first));
@@ -53,7 +53,7 @@ namespace Melt
             return list;
         }
 
-        public static byte[] ConcatToArray(this byte[] first, params byte[][] other)
+        internal static byte[] ConcatToArray(this byte[] first, params byte[][] other)
         {
             return first.ConcatToList(other).ToArray();
         }

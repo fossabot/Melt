@@ -32,14 +32,14 @@
         {
             switch (value)
             {
-                case sbyte _1: return BitConverter.GetBytes(_1);
-                case byte _2: return BitConverter.GetBytes(_2);
-                case short _3: return BitConverter.GetBytes(_3);
-                case ushort _4: return BitConverter.GetBytes(_4);
-                case int _5: return BitConverter.GetBytes(_5);
-                case uint _6: return BitConverter.GetBytes(_6);
-                case long _7: return BitConverter.GetBytes(_7);
-                case ulong _8: return BitConverter.GetBytes(_8);
+                case sbyte @sbyte: return BitConverter.GetBytes(@sbyte);
+                case byte @byte: return BitConverter.GetBytes(@byte);
+                case short @short: return BitConverter.GetBytes(@short);
+                case ushort @ushort: return BitConverter.GetBytes(@ushort);
+                case int @int: return BitConverter.GetBytes(@int);
+                case uint @uint: return BitConverter.GetBytes(@uint);
+                case long @long: return BitConverter.GetBytes(@long);
+                case ulong @ulong: return BitConverter.GetBytes(@ulong);
             }
 
             throw new NotSupportedException();
