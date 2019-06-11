@@ -8,8 +8,7 @@ namespace Melt.UnitTest
 
     [TestClass]
     public class MixedTypeTest
-    {
-        
+    {       
 
         [TestMethod]
         public void Mixed()

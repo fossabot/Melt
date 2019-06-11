@@ -13,7 +13,7 @@ namespace Melt
             this
                 .Register<BooleanConverter>()
                 .Register<SignedByteConverter>()
-                .Register<SignedShortConverter>()       
+                .Register<SignedShortConverter>()
                 .Register<SignedIntegerConverter>()
                 .Register<SignedLongConverter>()
                 .Register<UnsignedByteConverter>()
@@ -23,8 +23,10 @@ namespace Melt
                 .Register<CharacterConverter>()
                 .Register<SingleConverter>()
                 .Register<DoubleConverter>()
-                .Register<DecimalConverter>()       
+                .Register<DecimalConverter>()
                 .Register<UnicodeStringConverter>()
+
+                .Register<DateTimeConverter>()
 
                 .Register<TypeConverter>()
                 .Register<GuidConverter>()

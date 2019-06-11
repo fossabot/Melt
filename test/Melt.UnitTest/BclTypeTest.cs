@@ -47,5 +47,18 @@ namespace Melt.UnitTest
             TestContext.WriteLine("Type: {0}", wrapped.GetType());
             TestContext.WriteLine("Length: {0}", l);
         }
+        [TestMethod]
+        public void DateTime()
+        {
+            var raw = System.DateTime.Now;
+
+            byte[] bytes = p.Construct().Attach(raw);
+            var wrapped = p.Deconstruct(bytes).Detach<DateTime>(out int l);
+            Assert.AreEqual(raw, wrapped);
+            Assert.AreEqual(l, bytes.Length);
+            TestContext.WriteLine("Value: {0}", wrapped);
+            TestContext.WriteLine("Type: {0}", wrapped.GetType());
+            TestContext.WriteLine("Length: {0}", l);
+        }
     }
 }

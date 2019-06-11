@@ -10,18 +10,7 @@ namespace Melt.Dev
     {
         static void Main(string[] args)
         {
-            var c = new ConverterPool();
-            var v = (object)123456;
-            var cc = c.Construct();
-            var rr = cc.Attach(v);
 
-            Console.WriteLine(rr.ToHAString());
-
-            var resu = c.Deconstruct(rr).Detach<object>();
-            Console.WriteLine(resu);
-
-
-            Console.WriteLine("----");
             Console.ReadKey();
         }
     }
