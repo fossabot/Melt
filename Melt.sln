@@ -9,11 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Melt.UnitTest", "test\Melt.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Melt.Dev", "src\Melt.Dev\Melt.Dev.csproj", "{8710D6CD-0E7A-4C7D-9497-4CF9D5CD8488}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{506939A4-1786-4DC7-B0E0-A2F337393B90}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{DC1F1006-63AF-4B56-AEEA-1BED633E5298}"
 	ProjectSection(SolutionItems) = preProject
 		docs\how-to-en-us.md = docs\how-to-en-us.md
 		docs\how-to-zh-tw.md = docs\how-to-zh-tw.md
-		ReadMe.md = ReadMe.md
 	EndProjectSection
 EndProject
 Global

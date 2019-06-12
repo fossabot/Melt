@@ -1,3 +1,2 @@
 # Melt
-
-##### [中文](./docs/how-to-zh-tw.md)
+##### [中文](./how-to-zh-tw.md)

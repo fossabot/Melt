@@ -1,3 +1,2 @@
 # Melt
-
-##### [English](./docs/how-to-en-us.md)
+##### [English](./how-to-en-us.md)
