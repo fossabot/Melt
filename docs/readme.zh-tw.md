@@ -2,13 +2,13 @@
 ##### [English](./readme.en-us.md)
 
 #### 來由
-> 覺得 .Net 內建的封送處理機制 (Marshaling) 很難用  
-> 所以就花了一點時間自己造了一套處理該機制的類別庫
+> 覺得 .Net 內建的封送處理機制 (Marshaling) 很不太好用  
+> 所以就花了一點時間自己造了一套處理該機制的類別庫 - **Melt**
 
 #### 支援類型一覽
 
 | 類型 | 轉換器 | 依賴於
-| --- | --- | :---: |
+| --- | --- | --- |
 | ```System.Boolean``` | ```BooleanConverter``` |
 | ```System.Char``` | ```CharacterConverter``` |
 | ```System.Byte``` | ```UnsignedByteConverter``` |
@@ -22,12 +22,15 @@
 | ```System.Double``` | ```DoubleConverter``` |
 | ```System.Single``` | ```SingleConverter``` |
 | ```System.Decimal``` | ```DecimalConverter``` |
-| ```System.String``` | ```UnicodeStringConverter``` |
 | ```System.Guid``` | ```GuidConverter``` |
-| ```System.DateTime``` | ```DateTimeConverter``` | ```SignedLongConverter```
+| ```System.DateTime``` | ```DateTimeConverter``` | ```SignedLongConverter``` 
+| ```System.String``` | ```UnicodeStringConverter``` | ```SignedLongConverter``` ```SignedIntegerConverter```
 | ```System.Type``` | ```TypeConverter``` | ```UnicodeStringConverter```
 | ```System.Uri``` | ```UriConverter``` | ```UnicodeStringConverter```
 | ```System.Text.StringBuilder``` | ```StringBuilderConverter``` | ```UnicodeStringConverter```
-| ```System.Object``` | ```ObjectConverter``` | *
+| ```System.Enum``` | ```EnumerationConverter<TEnum> where TEnum : Enum``` | ```UnsignedByteConverter``` ```UnsignedShortConverter``` ```UnsignedIntegerConverter``` ```UnsignedLongConverter``` ```SignedByteConverter``` ```SignedShortConverter``` ```SignedIntegerConverter``` ```SignedLongConverter``` 
+| ```System.Net.IPAddress``` | ```IPAddressConverter``` | 
+| ```System.Net.IPEndPoint```| ```IPEndPointConverter```|```IPAddressConverter``` ```SignedIntegerConverter```
+| ```System.Object``` | ```ObjectConverter``` | ```*```
 
 [回首頁](../../../)

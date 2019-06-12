@@ -1,5 +1,5 @@
 ﻿// Author: Orlys
-// Contact: mailto:viyrex.aka.yuyu@gmail.com// Github: https://github.com/Orlys
+// Github: https://github.com/Orlys
 
 namespace Melt.Utilities
 {

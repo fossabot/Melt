@@ -10,7 +10,7 @@ namespace Melt.UnitTest
         [TestMethod]
         public void Mixed()
         {
-            var p = new ConverterPool();
+            var p = ConverterPool.Global;
             var value = "Test-Object";
             var value2 = 5987;
             var value3 = '#';

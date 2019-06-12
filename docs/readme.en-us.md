@@ -1,15 +1,15 @@
 # Melt
 ##### [中文](./readme.zh-tw.md)
 
-#### Movation
+#### Motivation
 > The .Net framework contains Marshaling mechanism to convert the object to the binary sequence.  
-> But that is very difficult and complicated to use. (Maybe just me, HAHA)
-> So I spent some time developing a new library.
+> But that is very difficult and complicated to use. (Maybe just me, HAHA)  
+> So I spent some time developing a new library - **Melt**.
 
 #### Supported Types
 
 | Type | Converter | Dependency
-| --- | --- | :---: |
+| --- | --- | --- |
 | ```System.Boolean``` | ```BooleanConverter``` |
 | ```System.Char``` | ```CharacterConverter``` |
 | ```System.Byte``` | ```UnsignedByteConverter``` |
@@ -23,12 +23,15 @@
 | ```System.Double``` | ```DoubleConverter``` |
 | ```System.Single``` | ```SingleConverter``` |
 | ```System.Decimal``` | ```DecimalConverter``` |
-| ```System.String``` | ```UnicodeStringConverter``` |
 | ```System.Guid``` | ```GuidConverter``` |
-| ```System.DateTime``` | ```DateTimeConverter``` | ```SignedLongConverter```
+| ```System.DateTime``` | ```DateTimeConverter``` | ```SignedLongConverter``` 
+| ```System.String``` | ```UnicodeStringConverter``` | ```SignedLongConverter``` ```SignedIntegerConverter```
 | ```System.Type``` | ```TypeConverter``` | ```UnicodeStringConverter```
 | ```System.Uri``` | ```UriConverter``` | ```UnicodeStringConverter```
 | ```System.Text.StringBuilder``` | ```StringBuilderConverter``` | ```UnicodeStringConverter```
-| ```System.Object``` | ```ObjectConverter``` | *
+| ```System.Enum``` | ```EnumerationConverter<TEnum> where TEnum : Enum``` | ```UnsignedByteConverter``` ```UnsignedShortConverter``` ```UnsignedIntegerConverter``` ```UnsignedLongConverter``` ```SignedByteConverter``` ```SignedShortConverter``` ```SignedIntegerConverter``` ```SignedLongConverter``` 
+| ```System.Net.IPAddress``` | ```IPAddressConverter``` | 
+| ```System.Net.IPEndPoint```| ```IPEndPointConverter```|```IPAddressConverter``` ```SignedIntegerConverter```
+| ```System.Object``` | ```ObjectConverter``` | ```*```
 
 [Back to home](../../../)

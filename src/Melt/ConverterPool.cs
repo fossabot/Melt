@@ -1,42 +1,65 @@
 ﻿// Author: Orlys
-// Contact: mailto:viyrex.aka.yuyu@gmail.com// Github: https://github.com/Orlys
+// Github: https://github.com/Orlys
 
 namespace Melt
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
 
     public class ConverterPool
     {
+        public static ConverterPool Global
+        {
+            get
+            {
+                lock (s_locker)
+                {
+                    if (s_instance == null)
+                    {
+                        lock (s_locker)
+                        {
+                            s_instance = new ConverterPool()
+                                .Register<BooleanConverter>()
+                                .Register<SignedByteConverter>()
+                                .Register<SignedShortConverter>()
+                                .Register<SignedIntegerConverter>()
+                                .Register<SignedLongConverter>()
+                                .Register<UnsignedByteConverter>()
+                                .Register<UnsignedShortConverter>()
+                                .Register<UnsignedIntegerConverter>()
+                                .Register<UnsignedLongConverter>()
+                                .Register<CharacterConverter>()
+                                .Register<SingleConverter>()
+                                .Register<DoubleConverter>()
+                                .Register<DecimalConverter>()
+                                .Register<UnicodeStringConverter>()
+
+                                .Register<DateTimeConverter>()
+                                .Register<UriConverter>()
+                                .Register<StringBuilderConverter>()
+                                .Register<TypeConverter>()
+                                .Register<GuidConverter>()
+                                .Register<IPAddressConverter>()
+                                .Register<IPEndPointConverter>()
+
+                                .Register<ObjectConverter>();
+                        }
+                    }
+                    return s_instance;
+                }
+            }
+        }
+        private readonly static object s_locker = new object();
+        private static volatile ConverterPool s_instance;
+
+
+
+
         private readonly List<IConverter> _converters = new List<IConverter>();
 
         public ConverterPool()
         {
-            this
-                .Register<BooleanConverter>()
-                .Register<SignedByteConverter>()
-                .Register<SignedShortConverter>()
-                .Register<SignedIntegerConverter>()
-                .Register<SignedLongConverter>()
-                .Register<UnsignedByteConverter>()
-                .Register<UnsignedShortConverter>()
-                .Register<UnsignedIntegerConverter>()
-                .Register<UnsignedLongConverter>()
-                .Register<CharacterConverter>()
-                .Register<SingleConverter>()
-                .Register<DoubleConverter>()
-                .Register<DecimalConverter>()
-                .Register<UnicodeStringConverter>()
-
-                .Register<DateTimeConverter>()
-                .Register<UriConverter>()
-                .Register<StringBuilderConverter>()
-                .Register<TypeConverter>()
-                .Register<GuidConverter>()
-
-                .Register<ObjectConverter>()
-                ;
-            ;
         }
 
         public Construct Construct()
@@ -51,6 +74,7 @@ namespace Melt
 
         public ConverterPool Register<T>(T inst) where T : IConverter
         {
+            Debug.WriteLine($"Register: [{_converters.Count}]({inst})");
             _converters.Add(inst);
             return this;
         }

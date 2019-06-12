@@ -84,7 +84,7 @@ namespace Melt.UnitTest
         [TestInitialize]
         public void Init()
         {
-            p = new ConverterPool();
+            p = ConverterPool.Global;
         }
 
         [TestMethod]
@@ -172,7 +172,7 @@ namespace Melt.UnitTest
         }
 
         [TestMethod]
-        public void String_2()
+        public void String_Empty()
         {
             var raw = "";
 
@@ -186,13 +186,14 @@ namespace Melt.UnitTest
         }
 
         [TestMethod]
-        public void String_3()
+        public void String_Null()
         {
             var raw = default(string);
 
             byte[] bytes = p.Construct().Attach(raw);
             var wrapped = p.Deconstruct(bytes).Detach<string>(out int l);
             Assert.AreEqual(raw, wrapped);
+            Assert.IsNull(wrapped);
             Assert.AreEqual(l, bytes.Length);
             TestContext.WriteLine("Value: {0}", wrapped);
             TestContext.WriteLine("Length: {0}", l);
