@@ -1,17 +1,17 @@
-﻿
+﻿// Author: Orlys
+// Github: https://github.com/Orlys
+
 namespace Melt
 {
     using Melt.Utilities;
+
     using System;
-    using System.Diagnostics;
-    using System.Linq;
     using System.Runtime.InteropServices;
 
     public abstract class ReferenceTypeConverter<T> : ConverterBase<T> where T : class
     {
-
+        private static int s_intSz = Marshal.SizeOf<int>();
         protected override byte[] DefaultValueBytes => ConverterCommonFields.Null;
-
 
         protected byte[] ConcatLenAndPayload(byte[] payload)
         {
@@ -19,7 +19,6 @@ namespace Melt
             return len.ConcatToArray(payload);
         }
 
-        private static int s_intSz = Marshal.SizeOf<int>();
         protected byte[] SeparateLenAndPayload(byte[] bytes, out int length)
         {
             var len = BitConverter.ToInt32(bytes, 0);
@@ -28,5 +27,4 @@ namespace Melt
             return payload;
         }
     }
-    
 }

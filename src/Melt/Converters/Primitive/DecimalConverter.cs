@@ -1,4 +1,6 @@
-﻿
+﻿// Author: Orlys
+// Github: https://github.com/Orlys
+
 namespace Melt
 {
     using System;
@@ -7,6 +9,7 @@ namespace Melt
     public sealed class DecimalConverter : ValueTypeConverter<decimal>
     {
         protected override int SpanSize => 16;
+
         protected override decimal OnConvertFromBytes(byte[] bytes, ConverterPool pool) => ToDecimal(bytes);
 
         protected override byte[] OnConvertToBytes(decimal graph, ConverterPool pool) => GetBytes(graph);
@@ -28,6 +31,7 @@ namespace Melt
             //return the bytes list as an array
             return bytes.ToArray();
         }
+
         private decimal ToDecimal(byte[] bytes)
         {
             if (bytes.Length != SpanSize)
@@ -40,5 +44,4 @@ namespace Melt
             return new decimal(bits);
         }
     }
-
 }

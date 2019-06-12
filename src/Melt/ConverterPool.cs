@@ -1,4 +1,6 @@
-﻿
+﻿// Author: Orlys
+// Contact: mailto:viyrex.aka.yuyu@gmail.com// Github: https://github.com/Orlys
+
 namespace Melt
 {
     using System;
@@ -34,7 +36,7 @@ namespace Melt
 
                 .Register<ObjectConverter>()
                 ;
-           ;
+            ;
         }
 
         public Construct Construct()

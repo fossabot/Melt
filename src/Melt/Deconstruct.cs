@@ -1,20 +1,22 @@
-﻿
+﻿// Author: Orlys
+// Github: https://github.com/Orlys
+
 namespace Melt
 {
     using System;
-    using System.Buffers;
-    using System.Linq;
 
     public sealed class Deconstruct
     {
         private readonly byte[] _bytes;
         private readonly ConverterPool _pool;
         private int _index = 0;
+
         internal Deconstruct(byte[] bytes, ConverterPool pool)
         {
             _bytes = bytes;
             _pool = pool;
         }
+
         public object Detach(Type type, out int length)
         {
             var span = _bytes.AsSpan(_index);

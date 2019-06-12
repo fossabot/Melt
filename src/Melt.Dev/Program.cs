@@ -1,21 +1,20 @@
-﻿using System;
+﻿// Author: Orlys
+// Contact: mailto:viyrex.aka.yuyu@gmail.com// Github: https://github.com/Orlys
 using Melt.Utilities;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using System;
 
 namespace Melt.Dev
 {
-    class Program
+    internal class Program
     {
-        enum s : long
+        private enum s : long
         {
-            a=1,
-            b=100
+            a = 1,
+            b = 100
         }
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var s = "";// default(string);
             var p = new ConverterPool();

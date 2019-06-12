@@ -1,12 +1,14 @@
-﻿
+﻿// Author: Orlys
+// Github: https://github.com/Orlys
+
 namespace Melt
 {
-    #region Primitive Type
-
     public sealed class UnsignedByteConverter : ValueTypeConverter<byte>
     {
         protected override int SpanSize => 1;
+
         protected override byte OnConvertFromBytes(byte[] bytes, ConverterPool pool) => bytes[0];
+
         protected override byte[] OnConvertToBytes(byte graph, ConverterPool pool) => new byte[1] { graph };
     }
 
@@ -20,5 +22,4 @@ namespace Melt
         protected override byte[] DefaultValueBytes => ConverterCommonFields.Null;
     }
     */
-    #endregion
 }

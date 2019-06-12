@@ -1,4 +1,6 @@
-﻿
+﻿// Author: Orlys
+// Contact: mailto:viyrex.aka.yuyu@gmail.com// Github: https://github.com/Orlys
+
 namespace Melt.Utilities
 {
     using System;
@@ -6,14 +8,11 @@ namespace Melt.Utilities
     using System.Linq;
     using System.Text;
 
-
-
 #if DEBUG
+
     public
-#else
-    internal
-#endif 
-        static class ByteArrayUtility
+#endif
+    static class ByteArrayUtility
     {
         private static StringBuilder s_builder
         {
@@ -25,6 +24,7 @@ namespace Melt.Utilities
                 return s_sb;
             }
         }
+
         private static StringBuilder s_sb;
 
         /// <summary>
@@ -34,9 +34,8 @@ namespace Melt.Utilities
         /// <returns></returns>
 
 #if DEBUG
-    public
-#else
-    internal
+
+        public
 #endif
         static string ToHAString(this byte[] bytes)
         {
@@ -49,18 +48,17 @@ namespace Melt.Utilities
         }
 
 #if DEBUG
-    public
-#else
-    internal
+
+        public
 #endif
-        static string ToHAString(this Construct c) => ((byte[])c).ToHAString();
+            static string ToHAString(this Construct c) => ((byte[])c).ToHAString();
 
         internal static List<byte> ConcatToList(this byte[] first, params byte[][] other)
         {
             if (other == null && first == null)
                 throw new ArgumentNullException(nameof(first));
 
-            var list = first.ToList();            
+            var list = first.ToList();
 
             foreach (var bs in other)
             {
@@ -76,5 +74,4 @@ namespace Melt.Utilities
             return first.ConcatToList(other).ToArray();
         }
     }
-   
 }

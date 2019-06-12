@@ -1,25 +1,16 @@
-﻿namespace Melt
+﻿// Author: Orlys
+// Contact: mailto:viyrex.aka.yuyu@gmail.com// Github: https://github.com/Orlys
+namespace Melt
 {
     using System;
 
-
     public sealed class EnumerationConverter<TEnum> : ConverterBase<TEnum> where TEnum : Enum
-    {   
-
-        protected override byte[] OnConvertToBytes(TEnum graph, ConverterPool pool)
-        {
-            return pool.Construct().Attach(_underlyingType, graph);
-        }
-        protected override TEnum OnConvertFromBytes(byte[] bytes, out int length, ConverterPool pool)
-        {
-            return (TEnum)pool.Deconstruct(bytes).Detach(_underlyingType, out length);
-        }
-
-        protected override byte[] DefaultValueBytes => _defaultValueBytes;
-        
+    {
         private readonly byte[] _defaultValueBytes;
+
         private readonly Type _underlyingType = Enum.GetUnderlyingType(typeof(TEnum));
 
+        protected override byte[] DefaultValueBytes => _defaultValueBytes;
 
         public EnumerationConverter()
         {
@@ -27,7 +18,16 @@
             _defaultValueBytes = GetBytes(value);
         }
 
-        
+        protected override TEnum OnConvertFromBytes(byte[] bytes, out int length, ConverterPool pool)
+        {
+            return (TEnum)pool.Deconstruct(bytes).Detach(_underlyingType, out length);
+        }
+
+        protected override byte[] OnConvertToBytes(TEnum graph, ConverterPool pool)
+        {
+            return pool.Construct().Attach(_underlyingType, graph);
+        }
+
         private byte[] GetBytes(object value)
         {
             switch (value)
@@ -44,6 +44,5 @@
 
             throw new NotSupportedException();
         }
-        
     }
 }

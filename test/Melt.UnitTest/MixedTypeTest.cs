@@ -1,15 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// Author: Orlys
+// Github: https://github.com/Orlys
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Melt.UnitTest
 {
-
     [TestClass]
     public class MixedTypeTest
-    {       
-
+    {
         [TestMethod]
         public void Mixed()
         {
@@ -20,7 +17,6 @@ namespace Melt.UnitTest
 
             byte[] bytes = p.Construct().Attach(value).Attach(value2).Attach(value3);
             var d = p.Deconstruct(bytes);
-
 
             Assert.AreEqual(d.Detach<string>(), value);
             Assert.AreEqual(d.Detach<int>(), value2);
