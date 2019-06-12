@@ -11,8 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Melt.Dev", "src\Melt.Dev\Me
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{DC1F1006-63AF-4B56-AEEA-1BED633E5298}"
 	ProjectSection(SolutionItems) = preProject
-		docs\how-to-en-us.md = docs\how-to-en-us.md
-		docs\how-to-zh-tw.md = docs\how-to-zh-tw.md
+		docs\readme.en-us.md = docs\readme.en-us.md
+		Readme.md = Readme.md
+		docs\readme.zh-tw.md = docs\readme.zh-tw.md
 	EndProjectSection
 EndProject
 Global
