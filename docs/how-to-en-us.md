@@ -1,2 +1,2 @@
 # Melt
-##### [¤¤¤å](./how-to-zh-tw.md)
+##### [ä¸­æ–‡](./how-to-zh-tw.md)
