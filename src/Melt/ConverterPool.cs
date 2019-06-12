@@ -27,7 +27,8 @@ namespace Melt
                 .Register<UnicodeStringConverter>()
 
                 .Register<DateTimeConverter>()
-
+                .Register<UriConverter>()
+                .Register<StringBuilderConverter>()
                 .Register<TypeConverter>()
                 .Register<GuidConverter>()
 
@@ -48,7 +49,6 @@ namespace Melt
 
         public ConverterPool Register<T>(T inst) where T : IConverter
         {
-            Console.WriteLine($"[{_converters.Count}]: " + inst);
             _converters.Add(inst);
             return this;
         }
@@ -68,7 +68,7 @@ namespace Melt
                 }
             }
 
-            throw new Exception("Converter not found");
+            throw new Exception($"Can not convert type '{type}' because converter not found.");
         }
 
         internal IConverter Get<T>()

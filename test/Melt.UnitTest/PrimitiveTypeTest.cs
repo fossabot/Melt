@@ -16,22 +16,6 @@ namespace Melt.UnitTest
         public TestContext TestContext { get; set; }
 
         [TestMethod]
-        public void Object()
-        {
-            var raw = 12345;
-
-            var c = p.Construct();
-            byte[] bytes = c.Attach<object>(raw);
-
-            var wrapped = p.Deconstruct(bytes).Detach<object>(out var l);
-            Assert.AreEqual(raw, wrapped);
-            Assert.AreEqual(l, bytes.Length);
-            TestContext.WriteLine("Value: {0}", wrapped);
-            TestContext.WriteLine("Type: {0}", wrapped.GetType());
-            TestContext.WriteLine("Length: {0}", l);
-        }
-
-        [TestMethod]
         public void Bool()
         {
             var raw = true;
@@ -225,6 +209,31 @@ namespace Melt.UnitTest
             Assert.AreEqual(l, bytes.Length);
             TestContext.WriteLine("Value: {0}", wrapped);
             TestContext.WriteLine("Type: {0}", wrapped.GetType());
+            TestContext.WriteLine("Length: {0}", l);
+        }
+        [TestMethod]
+        public void String_2()
+        {
+            var raw = "";
+
+            byte[] bytes = p.Construct().Attach( raw);
+            var wrapped = p.Deconstruct(bytes).Detach<string>(out int l);
+            Assert.AreEqual(raw, wrapped);
+            Assert.AreEqual(l, bytes.Length);
+            TestContext.WriteLine("Value: {0}", wrapped);
+            TestContext.WriteLine("Type: {0}", wrapped.GetType());
+            TestContext.WriteLine("Length: {0}", l);
+        }
+        [TestMethod]
+        public void String_3()
+        {
+            var raw = default(string);
+
+            byte[] bytes = p.Construct().Attach(raw);
+            var wrapped = p.Deconstruct(bytes).Detach<string>(out int l);
+            Assert.AreEqual(raw, wrapped);
+            Assert.AreEqual(l, bytes.Length);
+            TestContext.WriteLine("Value: {0}", wrapped);
             TestContext.WriteLine("Length: {0}", l);
         }
 

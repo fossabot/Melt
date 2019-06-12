@@ -1,4 +1,5 @@
 ﻿using System;
+using Melt.Utilities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,14 +17,12 @@ namespace Melt.Dev
 
         static void Main(string[] args)
         {
-            var q = new ConverterPool();
-            var ee = s.b;
-            var e = new EnumerationConverter<s>();
-            var r = e.ToBytes(ee, q);
-
-            var w = e.FromBytes(r, out var v, q);
-            Console.WriteLine(w);
-
+            var s = "";// default(string);
+            var p = new ConverterPool();
+            var b = p.Construct().Attach(s);
+            Console.WriteLine(b.ToHAString());
+            var k = p.Deconstruct(b).Detach<string>();
+            Console.WriteLine(k == "");
             Console.ReadKey();
         }
     }

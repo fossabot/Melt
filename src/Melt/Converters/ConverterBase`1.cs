@@ -26,13 +26,13 @@ namespace Melt
 
 
         public byte[] ToBytes(T obj, ConverterPool pool)
-{
+        {
+            if (Equals(obj, default(T)))
+                return DefaultValueBytes;
 
             if (!IsTypeMatch(typeof(T)))
                 return DefaultValueBytes;
 
-            if (Equals(obj, default(T)))
-                return DefaultValueBytes;
 
             return OnConvertToBytes(obj, pool);
         }

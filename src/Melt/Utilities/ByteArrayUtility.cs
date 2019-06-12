@@ -1,12 +1,19 @@
 ﻿
-namespace Melt
+namespace Melt.Utilities
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
 
-    internal static class ByteArrayUtility
+
+
+#if DEBUG
+    public
+#else
+    internal
+#endif 
+        static class ByteArrayUtility
     {
         private static StringBuilder s_builder
         {
@@ -25,7 +32,13 @@ namespace Melt
         /// </summary>
         /// <param name="bytes"></param>
         /// <returns></returns>
-        internal static string ToHAString(this byte[] bytes)
+
+#if DEBUG
+    public
+#else
+    internal
+#endif
+        static string ToHAString(this byte[] bytes)
         {
             s_builder.Clear();
             s_builder.Append("{ ");
@@ -35,7 +48,12 @@ namespace Melt
             return s_builder.ToString();
         }
 
-        internal static string ToHAString(this Construct c) => ((byte[])c).ToHAString();
+#if DEBUG
+    public
+#else
+    internal
+#endif
+        static string ToHAString(this Construct c) => ((byte[])c).ToHAString();
 
         internal static List<byte> ConcatToList(this byte[] first, params byte[][] other)
         {

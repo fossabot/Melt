@@ -25,7 +25,8 @@ namespace Melt
         protected override string OnConvertFromBytes(byte[] bytes, out int length, ConverterPool pool)
         {
             var span = bytes.AsSpan();
-            if (span.Slice(0, _empty.Length).SequenceEqual(_empty.AsSpan()))
+
+            if (span.Length == _empty.Length && _empty.AsSpan().SequenceEqual(span.Slice(0, _empty.Length)))
             {
                 length = _empty.Length;
                 return string.Empty;
