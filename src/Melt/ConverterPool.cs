@@ -19,7 +19,9 @@ namespace Melt
                     {
                         lock (s_locker)
                         {
-                            s_instance = new ConverterPool()
+                            s_instance = new ConverterPool();
+                            
+                            s_instance
                                 .Register<BooleanConverter>()
                                 .Register<SignedByteConverter>()
                                 .Register<SignedShortConverter>()
@@ -34,7 +36,6 @@ namespace Melt
                                 .Register<DoubleConverter>()
                                 .Register<DecimalConverter>()
                                 .Register<UnicodeStringConverter>()
-
                                 .Register<DateTimeConverter>()
                                 .Register<UriConverter>()
                                 .Register<StringBuilderConverter>()
@@ -42,8 +43,8 @@ namespace Melt
                                 .Register<GuidConverter>()
                                 .Register<IPAddressConverter>()
                                 .Register<IPEndPointConverter>()
-
                                 .Register<ObjectConverter>();
+                                
                         }
                     }
                     return s_instance;
@@ -52,9 +53,6 @@ namespace Melt
         }
         private readonly static object s_locker = new object();
         private static volatile ConverterPool s_instance;
-
-
-
 
         private readonly List<IConverter> _converters = new List<IConverter>();
 
@@ -72,6 +70,7 @@ namespace Melt
             return new Deconstruct(bytes, this);
         }
 
+
         public ConverterPool Register<T>(T inst) where T : IConverter
         {
             Debug.WriteLine($"Register: [{_converters.Count}]({inst})");
@@ -83,6 +82,7 @@ namespace Melt
         {
             return Register(new T());
         }
+        
 
         internal IConverter Get(Type type)
         {
