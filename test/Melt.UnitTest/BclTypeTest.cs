@@ -16,6 +16,21 @@ namespace Melt.UnitTest
         public TestContext TestContext { get; set; }
 
         [TestMethod]
+        public void Regex()
+        {
+            var raw = new System.Text.RegularExpressions.Regex("[A-Z][a-z]+");
+
+            byte[] bytes = p.Construct().Attach(raw);
+            var wrapped = p.Deconstruct(bytes).Detach<System.Text.RegularExpressions.Regex>(out int l);
+            Assert.IsTrue(wrapped.IsMatch("Orlys"));
+            Assert.AreEqual(raw.ToString(), wrapped.ToString());
+            Assert.AreEqual(l, bytes.Length);
+            TestContext.WriteLine("Value: {0}", wrapped);
+            TestContext.WriteLine("Type: {0}", wrapped.GetType());
+            TestContext.WriteLine("Length: {0}", l);
+        }
+
+        [TestMethod]
         public void IPEndPoint_v4()
         {
             var raw = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 80);
@@ -77,6 +92,20 @@ namespace Melt.UnitTest
 
             byte[] bytes = p.Construct().Attach(raw);
             var wrapped = p.Deconstruct(bytes).Detach<DateTime>(out int l);
+            Assert.AreEqual(raw, wrapped);
+            Assert.AreEqual(l, bytes.Length);
+            TestContext.WriteLine("Value: {0}", wrapped);
+            TestContext.WriteLine("Type: {0}", wrapped.GetType());
+            TestContext.WriteLine("Length: {0}", l);
+        }
+
+
+        [TestMethod]
+        public void TimeSpan()
+        {
+            var raw = System.TimeSpan.FromTicks(System.DateTime.Now.Ticks);
+            byte[] bytes = p.Construct().Attach(raw);
+            var wrapped = p.Deconstruct(bytes).Detach<TimeSpan>(out int l);
             Assert.AreEqual(raw, wrapped);
             Assert.AreEqual(l, bytes.Length);
             TestContext.WriteLine("Value: {0}", wrapped);

@@ -2,7 +2,7 @@ using System;
 using System.Reflection.Emit;
 using System.Reflection;
 
-namespace ClrTest.Reflection {
+namespace Melt.Reflection {
     public abstract class ILInstruction {
         protected Int32 m_offset;
         protected OpCode m_opCode;

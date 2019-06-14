@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IL\Class1.cs" />
     <Compile Include="IL\DynamicMethodHelper.cs" />
     <Compile Include="IL\FormatProvider.cs" />
     <Compile Include="IL\ILInstruction.cs" />
@@ -72,7 +73,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="act.il" />
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>

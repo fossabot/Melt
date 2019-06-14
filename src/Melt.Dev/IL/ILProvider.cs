@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace ClrTest.Reflection {
+namespace Melt.Reflection {
     public interface IILProvider {
         byte[] GetByteArray();
     }
@@ -9,6 +9,11 @@ namespace ClrTest.Reflection {
     public class MethodBaseILProvider : IILProvider {
         MethodBase m_method;
         byte[] m_byteArray;
+
+        public MethodBaseILProvider(byte[] il)
+        {
+            m_byteArray = il;
+        }
 
         public MethodBaseILProvider(MethodBase method) {
             m_method = method;

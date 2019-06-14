@@ -4,22 +4,22 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace ClrTest.Reflection {
+namespace Melt.Reflection {
     public sealed class ILReader : IEnumerable<ILInstruction>, IEnumerable {
         #region Static members
-        static Type s_runtimeMethodInfoType = Type.GetType("System.Reflection.RuntimeMethodInfo");
-        static Type s_runtimeConstructorInfoType = Type.GetType("System.Reflection.RuntimeConstructorInfo");
+        readonly static Type s_runtimeMethodInfoType = Type.GetType("System.Reflection.RuntimeMethodInfo");
+        readonly static Type s_runtimeConstructorInfoType = Type.GetType("System.Reflection.RuntimeConstructorInfo");
         
-        static OpCode[] s_OneByteOpCodes;
-        static OpCode[] s_TwoByteOpCodes;
+        readonly static OpCode[] s_OneByteOpCodes;
+        readonly static OpCode[] s_TwoByteOpCodes;
 
         static ILReader() {
             s_OneByteOpCodes = new OpCode[0x100];
             s_TwoByteOpCodes = new OpCode[0x100];
 
-            foreach (FieldInfo fi in typeof(OpCodes).GetFields(BindingFlags.Public | BindingFlags.Static)) {
-                OpCode opCode = (OpCode)fi.GetValue(null);
-                UInt16 value = (UInt16)opCode.Value;
+            foreach (var fi in typeof(OpCodes).GetFields(BindingFlags.Public | BindingFlags.Static)) {
+                var opCode = (OpCode)fi.GetValue(null);
+                var value = (ushort)opCode.Value;
                 if (value < 0x100) {
                     s_OneByteOpCodes[value] = opCode;
                 } else if ((value & 0xff00) == 0xfe00) {
@@ -29,17 +29,31 @@ namespace ClrTest.Reflection {
         }
         #endregion
 
-        Int32 m_position;
+        int m_position;
         ITokenResolver m_resolver;
         IILProvider m_ilProvider;
         byte[] m_byteArray;
+
+        public ILReader(Type rtType, byte[] il, Module module, Type[] methodContext, Type[] typeContext)
+        {
+            if (rtType != s_runtimeMethodInfoType && rtType != s_runtimeConstructorInfoType)
+            {
+                throw new ArgumentException("method must be RuntimeMethodInfo or RuntimeConstructorInfo for this constructor.");
+            }
+
+            m_ilProvider = new MethodBaseILProvider(il);
+            m_resolver = new ModuleScopeTokenResolver(module, methodContext, typeContext);
+            m_byteArray = m_ilProvider.GetByteArray();
+            m_position = 0;
+        }
+
 
         public ILReader(MethodBase method) {
             if (method == null) {
                 throw new ArgumentNullException("method");
             }
 
-            Type rtType = method.GetType();
+            var rtType = method.GetType();
             if (rtType != s_runtimeMethodInfoType && rtType != s_runtimeConstructorInfoType) {
                 throw new ArgumentException("method must be RuntimeMethodInfo or RuntimeConstructorInfo for this constructor.");
             }
@@ -74,9 +88,9 @@ namespace ClrTest.Reflection {
         }
 
         ILInstruction Next() {
-            Int32 offset = m_position;
-            OpCode opCode = OpCodes.Nop;
-            Int32 token = 0;
+            var offset = m_position;
+            var opCode = OpCodes.Nop;
+            var token = 0;
 
             // read first 1 or 2 bytes as opCode
             Byte code = ReadByte();
@@ -183,7 +197,7 @@ namespace ClrTest.Reflection {
             if (visitor == null)
                 throw new ArgumentNullException("argument 'visitor' can not be null");
 
-            foreach (ILInstruction instruction in this) {
+            foreach (var instruction in this) {
                 instruction.Accept(visitor);
             }
         }

@@ -25,6 +25,7 @@
 | ```System.Decimal``` | ```DecimalConverter``` |
 | ```System.Guid``` | ```GuidConverter``` |
 | ```System.DateTime``` | ```DateTimeConverter``` | ```SignedLongConverter``` 
+| ```System.TimeSpan``` | ```TimeSpanConverter``` | ```SignedLongConverter``` 
 | ```System.String``` | ```UnicodeStringConverter``` | ```SignedLongConverter``` ```SignedIntegerConverter```
 | ```System.Type``` | ```TypeConverter``` | ```UnicodeStringConverter```
 | ```System.Uri``` | ```UriConverter``` | ```UnicodeStringConverter```
@@ -32,6 +33,8 @@
 | ```System.Enum``` | ```EnumerationConverter<TEnum> where TEnum : Enum``` | ```UnsignedByteConverter``` ```UnsignedShortConverter``` ```UnsignedIntegerConverter``` ```UnsignedLongConverter``` ```SignedByteConverter``` ```SignedShortConverter``` ```SignedIntegerConverter``` ```SignedLongConverter``` 
 | ```System.Net.IPAddress``` | ```IPAddressConverter``` | 
 | ```System.Net.IPEndPoint```| ```IPEndPointConverter```|```IPAddressConverter``` ```SignedIntegerConverter```
+| ```System.Text.RegularExpression.Regex```| ```RegexConverter```|```SignedShortConverter``` ```TimeSpanConverter``` ```UnicodeStringConverter```
+| ```System.Collection.ICollection```| ```CollectionConverter```|```UnsignedByteConverter``` ```SignedIntegerConverter``` ```TypeConverter``` ```ObjectConverter```
 | ```System.Object``` | ```ObjectConverter``` | ```*```
 
 [Back to home](../../../)

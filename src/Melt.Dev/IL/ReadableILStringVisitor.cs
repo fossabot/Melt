@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace ClrTest.Reflection {
+namespace Melt.Reflection {
     public interface IILStringCollector {
         void Process(ILInstruction ilInstruction, string operandString);
     }

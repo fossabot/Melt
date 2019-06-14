@@ -13,7 +13,7 @@ using System.Text;
 using System.Reflection.Emit;
 using System.Reflection;
 
-namespace ClrTest.Reflection {
+namespace Melt.Reflection {
     public class DynamicMethodHelper {
         public class ILInfoGetTokenVisitor : ILInstructionVisitor {
             private DynamicILInfo ilInfo;

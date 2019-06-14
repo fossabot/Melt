@@ -23,4 +23,5 @@ namespace Melt
             return pool.Construct().Attach(str);
         }
     }
+    
 }

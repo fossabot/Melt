@@ -28,7 +28,8 @@ namespace Melt
         {
             var c = _pool.Get(type);
             var bytes = c.ToBytes(value, _pool);
-            _bytes.AddRange(bytes);
+            if (bytes != null)
+                _bytes.AddRange(bytes);
             return this;
         }
 

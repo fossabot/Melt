@@ -5,12 +5,10 @@ namespace Melt
 {
     using System;
     using System.Runtime.InteropServices;
-    
     public sealed class DateTimeConverter : ValueTypeConverter<DateTime>
     {
-        private readonly static int s_sz = Marshal.SizeOf<long>();
-
-        protected override int SpanSize => s_sz;
+        private readonly static int s_intSz = Marshal.SizeOf<long>();
+        protected override int SpanSize => s_intSz;
 
         protected override DateTime OnConvertFromBytes(byte[] bytes, ConverterPool pool)
         {

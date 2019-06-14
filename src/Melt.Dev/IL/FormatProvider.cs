@@ -5,7 +5,7 @@ using System.IO;
 using System.Reflection.Emit;
 using System.Reflection;
 
-namespace ClrTest.Reflection {
+namespace Melt.Reflection {
     public interface IFormatProvider {
         string Int32ToHex(int int32);
         string Int16ToHex(int int16);
