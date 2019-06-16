@@ -43,6 +43,7 @@
 
                                 .Register<ArrayConverter>()
                                 .Register<ListConverter>()
+                                .Register<EnumerationConverter>()
 
                                 .Register<ObjectConverter>();
 

@@ -67,20 +67,23 @@ namespace Melt.Dev
         }
         */
         
+        
+        enum R
+        {
+            A = 1,B = 2, C=4
+        }
+
         private static void Main(string[] args)
         {
-            var l = new object[] { "#", 2, 3, 4, 5 };
+            var l = (R)7;
 
             var bytes = l.ToConstruct();
 
             Console.WriteLine(bytes.ToHAString());
 
             Console.WriteLine("------------------------");
-            var d = bytes.ToDeconstruct().Detach<object[]>();
-            foreach (var item in d)
-            {
-                Console.WriteLine(item);
-            }
+            var d = bytes.ToDeconstruct().Detach<R>();
+            Console.WriteLine(d);
             Console.WriteLine("------------------------");
 
             Console.ReadKey();

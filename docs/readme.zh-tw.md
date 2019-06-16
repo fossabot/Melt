@@ -1,5 +1,5 @@
 # Melt
-##### [English](https://github.com/Orlys/Melt/blob/master/docs/readme.en-us.md)
+##### [English](./readme.en-us.md)
 
 #### 來由
 > 覺得 .Net 內建的封送處理機制 (Marshaling) 很不太好用  
@@ -29,6 +29,7 @@
 | ```System.Type``` | ```TypeConverter``` | ```UnicodeStringConverter```
 | ```System.Uri``` | ```UriConverter``` | ```UnicodeStringConverter```
 | ```System.Text.StringBuilder``` | ```StringBuilderConverter``` | ```UnicodeStringConverter```
+| ```System.Enum``` | ```EnumerationConverter``` | ```TypeConverter``` ```ObjectConverter``` 
 | ```System.Enum``` | ```EnumerationConverter<TEnum> where TEnum : Enum``` | ```UnsignedByteConverter``` ```UnsignedShortConverter``` ```UnsignedIntegerConverter``` ```UnsignedLongConverter``` ```SignedByteConverter``` ```SignedShortConverter``` ```SignedIntegerConverter``` ```SignedLongConverter``` 
 | ```System.Net.IPAddress``` | ```IPAddressConverter``` | ```SignedIntegerConverter```
 | ```System.Net.IPEndPoint``` | ```IPEndPointConverter```| ```IPAddressConverter``` ```SignedIntegerConverter```
@@ -39,4 +40,4 @@
 | ```System.Object``` | ```ObjectConverter``` | ```*```
 
 
-[回首頁](https://github.com/Orlys/Melt)
+[回首頁](../../../)

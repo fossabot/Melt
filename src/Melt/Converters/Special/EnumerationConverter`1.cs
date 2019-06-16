@@ -4,6 +4,8 @@ namespace Melt
 {
     using System;
 
+    //這個轉換器提供使用者進行特定型別的強式轉換(不需要攜帶額外的型別資訊)
+    [Obsolete("This converter provides the user to convert the specific enumeration type conversion without boxed the type information.")]
     public sealed class EnumerationConverter<TEnum> : ConverterBase<TEnum> where TEnum : Enum
     {
         private readonly byte[] _defaultValueBytes;
