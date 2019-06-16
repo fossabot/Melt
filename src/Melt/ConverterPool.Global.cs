@@ -41,7 +41,8 @@
                                 .Register<IPEndPointConverter>()
                                 .Register<RegexConverter>()
 
-                                .Register<CollectionConverter>()
+                                .Register<ArrayConverter>()
+                                .Register<ListConverter>()
 
                                 .Register<ObjectConverter>();
 

@@ -13,6 +13,34 @@ namespace Melt.Dev
     using System.Linq;
     using System.Runtime.CompilerServices;
     using System.Text;
+    
+    public static class ConstructExtension
+    {
+        private static ConverterPool s_pool;
+        public static ConverterPool Default
+        {
+            get
+            {
+                if (s_pool == null)
+                    return ConverterPool.Global;
+                return s_pool;
+            }
+            set
+            {
+                s_pool = value;
+            }
+        }
+
+        public static Construct ToConstruct<T>(this T obj)
+        {
+            return Default.Construct().Attach(obj);
+        }
+
+        public static Deconstruct ToDeconstruct(this Construct construct)
+        {
+            return Default.Deconstruct(construct);
+        }
+    }
 
     internal class Program
     {
@@ -38,27 +66,22 @@ namespace Melt.Dev
             }
         }
         */
-
-
-        class MyClass
-        {
-
-        }
+        
         private static void Main(string[] args)
         {
-            var ty = new MyClass().GetType();
+            var l = new object[] { "#", 2, 3, 4, 5 };
 
-            var p = new ConverterPool();
-            p.Register<SignedIntegerConverter>();
-            p.Register<UnicodeStringConverter>();
-            p.Register<TypeConverter>();
+            var bytes = l.ToConstruct();
 
-            byte[] bytes = p.Construct().Attach(ty);
             Console.WriteLine(bytes.ToHAString());
-            Console.WriteLine("len: "+bytes.Length);
-            var b = p.Deconstruct(bytes).Detach<Type>();
 
-            Console.WriteLine(b);
+            Console.WriteLine("------------------------");
+            var d = bytes.ToDeconstruct().Detach<object[]>();
+            foreach (var item in d)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine("------------------------");
 
             Console.ReadKey();
             return;

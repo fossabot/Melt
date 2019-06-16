@@ -6,6 +6,7 @@ namespace Melt
     using System.Collections.Generic;
     using System.Text;
 
+    /*
     public class CollectionConverter : ReferenceTypeConverter<ICollection>
     {
         public override bool IsTypeMatch(Type type) => typeof(ICollection).IsAssignableFrom(type);
@@ -89,5 +90,6 @@ namespace Melt
             return c;
         }
     }
+    */
 
 }
