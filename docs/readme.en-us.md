@@ -1,5 +1,5 @@
 # Melt
-##### [中文](./readme.zh-tw.md)
+##### [中文](https://github.com/Orlys/Melt/blob/master/docs/readme.zh-tw.md)
 
 #### Motivation
 > The .Net framework contains Marshaling mechanism to convert the object to the binary sequence.  
@@ -34,7 +34,9 @@
 | ```System.Net.IPAddress``` | ```IPAddressConverter``` | ```SignedIntegerConverter```
 | ```System.Net.IPEndPoint``` | ```IPEndPointConverter```| ```IPAddressConverter``` ```SignedIntegerConverter```
 | ```System.Text.RegularExpression.Regex``` | ```RegexConverter``` | ```SignedIntegerConverter``` ```SignedShortConverter``` ```TimeSpanConverter``` ```UnicodeStringConverter```
-| ```System.Collection.ICollection``` | ```CollectionConverter``` | ```UnsignedByteConverter``` ```ObjectConverter``` ```SignedIntegerConverter``` ```TypeConverter``` 
+| ```System.Array``` | ```ArrayConverter``` | ```SignedIntegerConverter``` ```TypeConverter``` ```ObjectConverter```
+| ```System.Collection.IList``` | ```ListConverter``` | ```SignedIntegerConverter``` ```SignedByteConverter``` ```TypeConverter``` ```ObjectConverter```
+| <del>```System.Collection.ICollection```</del> | <del>```CollectionConverter```</del> | <del>```UnsignedByteConverter``` ```ObjectConverter``` ```SignedIntegerConverter``` ```TypeConverter```</del> 
 | ```System.Object``` | ```ObjectConverter``` | ```*```
 
-[Back to home](../../../)
+[Back to home](https://github.com/Orlys/Melt)

@@ -1,5 +1,5 @@
 # Melt
-##### [English](./readme.en-us.md)
+##### [English](https://github.com/Orlys/Melt/blob/master/docs/readme.en-us.md)
 
 #### 來由
 > 覺得 .Net 內建的封送處理機制 (Marshaling) 很不太好用  
@@ -33,7 +33,10 @@
 | ```System.Net.IPAddress``` | ```IPAddressConverter``` | ```SignedIntegerConverter```
 | ```System.Net.IPEndPoint``` | ```IPEndPointConverter```| ```IPAddressConverter``` ```SignedIntegerConverter```
 | ```System.Text.RegularExpression.Regex``` | ```RegexConverter``` | ```SignedIntegerConverter``` ```SignedShortConverter``` ```TimeSpanConverter``` ```UnicodeStringConverter```
-| ```System.Collection.ICollection``` | ```CollectionConverter``` | ```UnsignedByteConverter``` ```ObjectConverter``` ```SignedIntegerConverter``` ```TypeConverter``` 
+| ```System.Array``` | ```ArrayConverter``` | ```SignedIntegerConverter``` ```TypeConverter``` ```ObjectConverter```
+| ```System.Collection.IList``` | ```ListConverter``` | ```SignedIntegerConverter``` ```SignedByteConverter``` ```TypeConverter``` ```ObjectConverter```
+| <del>```System.Collection.ICollection```</del> | <del>```CollectionConverter```</del> | <del>```UnsignedByteConverter``` ```ObjectConverter``` ```SignedIntegerConverter``` ```TypeConverter```</del> 
 | ```System.Object``` | ```ObjectConverter``` | ```*```
 
-[回首頁](../../../)
+
+[回首頁](https://github.com/Orlys/Melt)
