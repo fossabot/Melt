@@ -30,10 +30,10 @@
 | ```System.Uri``` | ```UriConverter``` | ```UnicodeStringConverter```
 | ```System.Text.StringBuilder``` | ```StringBuilderConverter``` | ```UnicodeStringConverter```
 | ```System.Enum``` | ```EnumerationConverter<TEnum> where TEnum : Enum``` | ```UnsignedByteConverter``` ```UnsignedShortConverter``` ```UnsignedIntegerConverter``` ```UnsignedLongConverter``` ```SignedByteConverter``` ```SignedShortConverter``` ```SignedIntegerConverter``` ```SignedLongConverter``` 
-| ```System.Net.IPAddress``` | ```IPAddressConverter``` | 
-| ```System.Net.IPEndPoint```| ```IPEndPointConverter```|```IPAddressConverter``` ```SignedIntegerConverter```
-| ```System.Text.RegularExpression.Regex```| ```RegexConverter```|```SignedShortConverter``` ```TimeSpanConverter``` ```UnicodeStringConverter```
-| ```System.Collection.ICollection```| ```CollectionConverter```|```UnsignedByteConverter``` ```SignedIntegerConverter``` ```TypeConverter``` ```ObjectConverter```
+| ```System.Net.IPAddress``` | ```IPAddressConverter``` | ```SignedIntegerConverter```
+| ```System.Net.IPEndPoint``` | ```IPEndPointConverter```| ```IPAddressConverter``` ```SignedIntegerConverter```
+| ```System.Text.RegularExpression.Regex``` | ```RegexConverter``` | ```SignedIntegerConverter``` ```SignedShortConverter``` ```TimeSpanConverter``` ```UnicodeStringConverter```
+| ```System.Collection.ICollection``` | ```CollectionConverter``` | ```UnsignedByteConverter``` ```ObjectConverter``` ```SignedIntegerConverter``` ```TypeConverter``` 
 | ```System.Object``` | ```ObjectConverter``` | ```*```
 
 [¦^­º­¶](../../../)

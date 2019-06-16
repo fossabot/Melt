@@ -6,8 +6,7 @@ namespace Melt
     using System.Collections.Generic;
     using System.Text;
 
-
-    public sealed class CollectionConverter : ReferenceTypeConverter<ICollection>
+    public class CollectionConverter : ReferenceTypeConverter<ICollection>
     {
         public override bool IsTypeMatch(Type type) => typeof(ICollection).IsAssignableFrom(type);
 
@@ -24,7 +23,7 @@ namespace Melt
                 var list = Activator.CreateInstance(listType);
                 if (count == 0)
                 {
-                    return list as ICollection;
+                    goto Leave;
                 }
 
                 if (count != 1)
@@ -34,6 +33,7 @@ namespace Melt
                     }
 
                 listType.GetMethod("Add").Invoke(list, new[] { d.Detach(genericType, out length) });
+                Leave:
                 return list as ICollection;
             }
             else if (flag == 1)
