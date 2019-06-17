@@ -7,6 +7,8 @@ namespace Melt
 
     public interface IConverter
     {
+        string Name { get; }
+
         object FromBytes(byte[] bytes, out int spanLength, ConverterPool pool);
 
         bool CanConvert(Type type);

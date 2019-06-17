@@ -23,8 +23,7 @@ namespace Melt
                 DateTimeMode = (DataSetDateTime)d.Detach<byte>(),
                 MaxLength = d.Detach<int>(),
                 Namespace = d.Detach<string>(),
-                //Prefix = d.Detach<string>(),
-                //ReadOnly = d.Detach<bool>(),
+                ReadOnly = d.Detach<bool>(),
                 Unique = d.Detach<bool>(out length)
             };
             return column;
@@ -45,8 +44,7 @@ namespace Melt
                 .Attach((byte)column.DateTimeMode)
                 .Attach(column.MaxLength)
                 .Attach(column.Namespace)
-                //.Attach(column.Prefix)
-                //.Attach(column.ReadOnly)
+                .Attach(column.ReadOnly)
                 .Attach(column.Unique);
             return c;
         }

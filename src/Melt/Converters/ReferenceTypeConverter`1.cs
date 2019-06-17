@@ -3,7 +3,7 @@
 
 namespace Melt
 {
-    using Melt.Utilities;
+    using Melt.Extensions;
 
     using System;
     using System.Runtime.InteropServices;

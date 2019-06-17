@@ -37,6 +37,7 @@
 | ```System.Text.RegularExpression.Regex``` | ```RegexConverter``` | ```SignedIntegerConverter``` ```SignedShortConverter``` ```TimeSpanConverter``` ```UnicodeStringConverter```
 | ```System.Array``` | ```ArrayConverter``` | ```SignedIntegerConverter``` ```TypeConverter``` ```ObjectConverter```
 | ```System.Collection.IList``` | ```ListConverter``` | ```SignedIntegerConverter``` ```SignedByteConverter``` ```TypeConverter``` ```ObjectConverter```
+| ```System.Collection.IDictionary``` | ```DictionaryConverter``` | ```SignedIntegerConverter``` ```SignedByteConverter``` ```TypeConverter``` ```ObjectConverter```
 | ```System.Data.DataColumn``` | ```DataColumnConverter``` | ```TypeConverter``` ```UnicodeStringConverter```
 | ```System.Data.DataTable``` | ```DataTableConverter``` | ```DataColumnConverter``` ```ArrayConverter``` ```ObjectConverter```
 | ```System.Data.DataSet``` | ```DataSetConverter``` | ```DataTableConverter``` ```ArrayConverter```

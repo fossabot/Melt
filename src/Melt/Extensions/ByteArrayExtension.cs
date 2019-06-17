@@ -1,7 +1,7 @@
 ﻿// Author: Orlys
 // Github: https://github.com/Orlys
 
-namespace Melt.Utilities
+namespace Melt.Extensions
 {
     using System;
     using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace Melt.Utilities
 
     public
 #endif
-    static class ByteArrayUtility
+    static class ByteArrayExtension
     {
         private static StringBuilder s_builder
         {

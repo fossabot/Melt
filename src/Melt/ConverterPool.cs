@@ -9,7 +9,7 @@ namespace Melt
 
     public partial class ConverterPool
     {
-        private readonly List<IConverter> _converters = new List<IConverter>();
+        private readonly HashSet<IConverter> _converters = new HashSet<IConverter>();
 
         public ConverterPool()
         {
@@ -28,8 +28,8 @@ namespace Melt
 
         public ConverterPool Register<T>(T inst) where T : IConverter
         {
-            Debug.WriteLine($"Register: [{_converters.Count}]({inst})");
-            _converters.Add(inst);
+            if (_converters.Add(inst))
+                Debug.WriteLine($"Register: [{_converters.Count}]({inst})");
             return this;
         }
 

@@ -3,21 +3,29 @@
 
 namespace Melt
 {
-    using Melt.Utilities;
+    using Melt.Extensions;
     using System;
     using System.Collections.Generic;
 
     using System.Diagnostics;
 
-#if DEBUG
-    [DebuggerDisplay("{_}")]
-#endif
+    internal class ConstructObjectView
+    {
+        private readonly Construct _construct;
 
+        public ConstructObjectView(Construct construct)
+        {
+            this._construct = construct;
+            this.BinaryStream = (byte[])construct;
+        }
+
+        public byte[] BinaryStream { get; }
+
+    }
+
+    [DebuggerTypeProxy(typeof(ConstructObjectView))]
     public sealed class Construct
     {
-#if DEBUG
-        private string _ => _bytes.ToArray().ToHAString();
-#endif
         private readonly List<byte> _bytes;
 
         private readonly ConverterPool _pool;

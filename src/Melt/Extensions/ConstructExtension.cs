@@ -1,7 +1,7 @@
 ﻿// Author: Orlys
 // Github: https://github.com/Orlys
 
-namespace Melt
+namespace Melt.Extensions
 {
     public static class ConstructExtension
     {
@@ -27,7 +27,22 @@ namespace Melt
 
         public static Deconstruct ToDeconstruct(this Construct construct)
         {
+            return ((byte[])construct).ToDeconstruct();
+        }
+        public static Deconstruct ToDeconstruct(this byte[] construct)
+        {
             return Default.Deconstruct(construct);
+        }
+
+        public static Deconstruct Detach<T>(this Deconstruct deconstruct, out T value)
+        {
+            return deconstruct.Detach(out value, out _);
+        }
+
+        public static Deconstruct Detach<T>(this Deconstruct deconstruct, out T value, out int length)
+        {
+            value = deconstruct.Detach<T>(out length);
+            return deconstruct;
         }
     }
 }

@@ -11,6 +11,26 @@ namespace Melt
 
     public abstract class ConverterBase<T> : IConverter
     {
+        public ConverterBase()
+        {
+            this.Name = this.GetType().Name;
+        }
+
+        public override string ToString() => this.Name;
+
+        public override bool Equals(object obj)
+        {
+            if(obj is IConverter c)
+            {
+                return c.GetHashCode() == this.GetHashCode();                
+            }
+            return false;
+        }
+
+        public override int GetHashCode() => this.Name.GetHashCode();
+
+        public virtual string Name { get; }
+
         protected abstract byte[] DefaultValueBytes { get; }
 
         public T FromBytes(byte[] bytes, out int spanLength, ConverterPool pool)
