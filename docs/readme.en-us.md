@@ -37,6 +37,10 @@
 | ```System.Text.RegularExpression.Regex``` | ```RegexConverter``` | ```SignedIntegerConverter``` ```SignedShortConverter``` ```TimeSpanConverter``` ```UnicodeStringConverter```
 | ```System.Array``` | ```ArrayConverter``` | ```SignedIntegerConverter``` ```TypeConverter``` ```ObjectConverter```
 | ```System.Collection.IList``` | ```ListConverter``` | ```SignedIntegerConverter``` ```SignedByteConverter``` ```TypeConverter``` ```ObjectConverter```
+| ```System.Data.DataColumn``` | ```DataColumnConverter``` | ```TypeConverter``` ```UnicodeStringConverter```
+| ```System.Data.DataTable``` | ```DataTableConverter``` | ```DataColumnConverter``` ```ArrayConverter``` ```ObjectConverter```
+| ```System.Data.DataSet``` | ```DataSetConverter``` | ```DataTableConverter``` ```ArrayConverter```
+| ```System.Globalization.CultureInfo``` | ```CultureInfoConverter``` | ```SignedIntegerConverter``` 
 | <del>```System.Collection.ICollection```</del> | <del>```CollectionConverter```</del> | <del>```UnsignedByteConverter```</del> <del>```ObjectConverter```</del> <del>```SignedIntegerConverter```</del> <del>```TypeConverter```</del> 
 | ```System.Object``` | ```ObjectConverter``` | ```*```
 

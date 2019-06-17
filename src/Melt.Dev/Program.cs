@@ -3,13 +3,10 @@
 
 namespace Melt.Dev
 {
-
-    using Melt.Support;
-    using Melt.Utilities;
-
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Data;
     using System.Diagnostics;
     using System.IO;
     using System.Linq;
@@ -23,60 +20,39 @@ namespace Melt.Dev
         [STAThread]
         private static void Main(string[] args)
         {
+            var g = ConverterPool.Global;
+            var table = new DataTable("TABLE");
+            table.Columns.Add(new DataColumn("id", typeof(int)) { AutoIncrement = true, AutoIncrementSeed = 1 });
+            table.Columns.Add(new DataColumn("name", typeof(string)));
 
-            var strAr = new[] { "ABC", "DE", "F" };
-            var ds = new[] { 1, 2, 3, 4 };
+            var row = table.NewRow();
+            row["id"] = 1;
+            row["name"] = "Yuyu";
+            table.Rows.Add(row);
 
-            var k = ds.ToConstruct().Attach(strAr);
+            row = table.NewRow();
+            row["id"] = 2;
+            row["name"] = "Alice";
+            table.Rows.Add(row);
 
-            Console.WriteLine(k.ToHAString());
+            table.AcceptChanges();
 
-            var dd = k.ToDeconstruct();
-            var x = dd.Detach<int[]>(out var len);
-            foreach (var item in x)
+            var bytes = table.ToConstruct();
+            Console.WriteLine(bytes);
+
+
+            var t = bytes.ToDeconstruct().Detach<DataTable>();
+
+            Console.WriteLine(t.Rows.Count);
+
+            foreach (DataRow r in t.Rows)
             {
-                Console.WriteLine(item);
+                Console.WriteLine(r["id"] + ": " + r["name"]);
             }
-            Console.WriteLine("-------");
-            foreach (var item in dd.Detach<string[]>())
-            {
-                Console.WriteLine(item);
-            }
-            Console.WriteLine();
-            Console.WriteLine(len);
-            Console.ReadKey();
-            return;
-
-            Console.WriteLine("-------");
-            foreach (var item in dd.Detach<int[]>())
-            {
-                Console.WriteLine(item);
-            }
-
-            Console.WriteLine("-------");
-            Console.ReadKey();
-            return;
-
-            var l = 7;
-
-            var bytes = l.ToConstruct();
-
-            Console.WriteLine(bytes.ToHAString());
-
-            Console.WriteLine("------------------------");
-            var d = bytes.ToDeconstruct().Detach<int>();
-            Console.WriteLine(d);
-            Console.WriteLine("------------------------");
 
             Console.ReadKey();
             return;
-            
-            Console.ReadKey();
-        }
-
-        
-
-        
+        }   
     }
 }
 

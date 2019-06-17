@@ -4,26 +4,7 @@
 namespace Melt
 {
     using System;
-    /*
-    public sealed class TypeConverter : ReferenceTypeConverter<Type>
-    {
-        public override bool IsTypeMatch(Type type)
-        {
-            return type.FullName.Equals("System.Type");
-        }
 
-        protected override Type OnConvertFromBytes(byte[] bytes, out int length, ConverterPool pool)
-        {
-            return Type.GetType(pool.Deconstruct(bytes).Detach<string>(out length));
-        }
-
-        protected override byte[] OnConvertToBytes(Type graph, ConverterPool pool)
-        {
-            var str = graph.IsPrimitive ? graph.FullName : graph.AssemblyQualifiedName;
-            return pool.Construct().Attach(str);
-        }
-    }
-    */
     public sealed class TypeConverter : ReferenceTypeConverter<Type>
     {
         public override bool CanConvert(Type type)
@@ -37,7 +18,6 @@ namespace Melt
             var code = d.Detach<int>(out length);
             if (TypeMap.TryGet(code, out var typeString))
             {
-                Console.WriteLine("T");
                 return Type.GetType(typeString);
             }
             if (code == 0x7FFFFFFF)
@@ -45,7 +25,7 @@ namespace Melt
                 return Type.GetType(d.Detach<string>(out length));
             }
 
-            throw new NotSupportedException("Type not difined. code:[0x" + code.ToString("X")+"]");
+            throw new NotSupportedException("Type not difined.");
         }
 
         protected override byte[] OnConvertToBytes(Type graph, ConverterPool pool)
@@ -57,7 +37,6 @@ namespace Melt
             }
             else
             {
-                Console.WriteLine("UNK");
                 c.Attach(0x7FFFFFFF).Attach(graph.AssemblyQualifiedName);
             }
             return c;

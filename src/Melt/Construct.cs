@@ -3,11 +3,21 @@
 
 namespace Melt
 {
+    using Melt.Utilities;
     using System;
     using System.Collections.Generic;
 
+    using System.Diagnostics;
+
+#if DEBUG
+    [DebuggerDisplay("{_}")]
+#endif
+
     public sealed class Construct
     {
+#if DEBUG
+        private string _ => _bytes.ToArray().ToHAString();
+#endif
         private readonly List<byte> _bytes;
 
         private readonly ConverterPool _pool;

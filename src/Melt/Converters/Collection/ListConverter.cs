@@ -1,5 +1,4 @@
-﻿
-namespace Melt
+﻿namespace Melt
 {
     using System;
     using System.Collections;

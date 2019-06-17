@@ -6,18 +6,7 @@
 > 所以就花了一點時間自己造了一套處理該機制的類別庫 - **Melt**
 
 #### 支援類型一覽
-##### 待實作
-- [ ] DataSet
-- [ ] DataTable
-- [ ] ISerializable 
-- [ ] ITuple
-- [x] IDictionary
-- [ ] ISet
-- [ ] Exception
-
-##### 已實作
 | 類型 | 轉換器 | 依賴於
-| --- | --- | --- |
 | --- | --- | --- |
 | ```System.Boolean``` | ```BooleanConverter``` |
 | ```System.Char``` | ```CharacterConverter``` |
@@ -46,6 +35,10 @@
 | ```System.Text.RegularExpression.Regex``` | ```RegexConverter``` | ```SignedIntegerConverter``` ```SignedShortConverter``` ```TimeSpanConverter``` ```UnicodeStringConverter```
 | ```System.Array``` | ```ArrayConverter``` | ```SignedIntegerConverter``` ```TypeConverter``` ```ObjectConverter```
 | ```System.Collection.IList``` | ```ListConverter``` | ```SignedIntegerConverter``` ```SignedByteConverter``` ```TypeConverter``` ```ObjectConverter```
+| ```System.Data.DataColumn``` | ```DataColumnConverter``` | ```TypeConverter``` ```UnicodeStringConverter```
+| ```System.Data.DataTable``` | ```DataTableConverter``` | ```DataColumnConverter``` ```ArrayConverter``` ```ObjectConverter```
+| ```System.Data.DataSet``` | ```DataSetConverter``` | ```DataTableConverter``` ```ArrayConverter```
+| ```System.Globalization.CultureInfo``` | ```CultureInfoConverter``` | ```SignedIntegerConverter``` 
 | <del>```System.Collection.ICollection```</del> | <del>```CollectionConverter```</del> | <del>```UnsignedByteConverter```</del> <del>```ObjectConverter```</del> <del>```SignedIntegerConverter```</del> <del>```TypeConverter```</del> 
 | ```System.Object``` | ```ObjectConverter``` | ```*```
 

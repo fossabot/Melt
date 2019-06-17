@@ -29,6 +29,8 @@
                                 .Register<SingleConverter>()
                                 .Register<DoubleConverter>()
                                 .Register<DecimalConverter>()
+                                .Register<EnumerationConverter>()
+
                                 .Register<UnicodeStringConverter>()
                                 .Register<DateTimeConverter>()
                                 .Register<TimeSpanConverter>()
@@ -44,7 +46,11 @@
                                 .Register<ArrayConverter>()
                                 .Register<ListConverter>()
                                 .Register<DictionaryConverter>()
-                                .Register<EnumerationConverter>()
+
+                                .Register<CultureInfoConverter>()
+                                .Register<DataColumnConverter>()
+                                .Register<DataTableConverter>()
+                                .Register<DataSetConverter>()
 
                                 .Register<ObjectConverter>();
 
