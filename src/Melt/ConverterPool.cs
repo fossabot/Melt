@@ -43,7 +43,7 @@ namespace Melt
         {
             foreach (var c in _converters)
             {
-                if (c.IsTypeMatch(type))
+                if (c.CanConvert(type))
                 {
                     return c;
                 }

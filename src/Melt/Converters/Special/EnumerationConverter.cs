@@ -6,7 +6,7 @@ namespace Melt
 
     public sealed class EnumerationConverter : ReferenceTypeConverter<Enum>
     {
-        public override bool IsTypeMatch(Type type)
+        public override bool CanConvert(Type type)
         {
             return type.IsEnum || type == typeof(Enum);
         }

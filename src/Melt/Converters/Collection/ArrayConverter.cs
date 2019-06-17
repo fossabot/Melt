@@ -5,7 +5,7 @@ namespace Melt
 
     public sealed class ArrayConverter : ReferenceTypeConverter<Array>
     {
-        public override bool IsTypeMatch(Type type)
+        public override bool CanConvert(Type type)
         {
             return type.IsArray || type.IsSubclassOf(typeof(Array)) || type == typeof(Array);
         }
@@ -39,7 +39,7 @@ namespace Melt
                     array.SetValue(current, i);
                 }
             }
-            var last = d.Detach(element);
+            var last = d.Detach(element, out length);
             array.SetValue(last, count - 1);
 
             Leave:

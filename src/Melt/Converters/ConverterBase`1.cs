@@ -33,14 +33,14 @@ namespace Melt
             return FromBytes(bytes, out spanLength, pool);
         }
 
-        public virtual bool IsTypeMatch(Type type) => type.FullName == typeof(T).FullName;
+        public virtual bool CanConvert(Type type) => type.FullName == typeof(T).FullName;
 
         public byte[] ToBytes(T obj, ConverterPool pool)
         {
             if (Equals(obj, default(T)))
                 return DefaultValueBytes;
 
-            if (!IsTypeMatch(typeof(T)))
+            if (!CanConvert(typeof(T)))
                 return DefaultValueBytes;
 
             return OnConvertToBytes(obj, pool);

@@ -9,7 +9,7 @@ namespace Melt
     {
         object FromBytes(byte[] bytes, out int spanLength, ConverterPool pool);
 
-        bool IsTypeMatch(Type type);
+        bool CanConvert(Type type);
 
         byte[] ToBytes(object obj, ConverterPool pool);
     }

@@ -4,9 +4,9 @@ namespace Melt
     using System;
     using System.Collections;
 
-    public sealed class ListConverter : ReferenceTypeConverter<IList>
+    public sealed class ListConverter : InterfaceTypeConverter<IList>
     {
-        public override bool IsTypeMatch(Type type) => (!type.IsArray) && typeof(IList).IsAssignableFrom(type);
+        public override bool CanConvert(Type type) => (!type.IsArray) && base.CanConvert(type);
         protected override byte[] OnConvertToBytes(IList list, ConverterPool pool)
         {
             var c = pool.Construct();

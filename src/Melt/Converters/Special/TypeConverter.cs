@@ -26,7 +26,7 @@ namespace Melt
     */
     public sealed class TypeConverter : ReferenceTypeConverter<Type>
     {
-        public override bool IsTypeMatch(Type type)
+        public override bool CanConvert(Type type)
         {
             return type.FullName.Equals("System.Type");
         }
@@ -37,13 +37,15 @@ namespace Melt
             var code = d.Detach<int>(out length);
             if (TypeMap.TryGet(code, out var typeString))
             {
+                Console.WriteLine("T");
                 return Type.GetType(typeString);
             }
             if (code == 0x7FFFFFFF)
             {
                 return Type.GetType(d.Detach<string>(out length));
             }
-            throw new NotSupportedException("Type not difined.");
+
+            throw new NotSupportedException("Type not difined. code:[0x" + code.ToString("X")+"]");
         }
 
         protected override byte[] OnConvertToBytes(Type graph, ConverterPool pool)
@@ -55,6 +57,7 @@ namespace Melt
             }
             else
             {
+                Console.WriteLine("UNK");
                 c.Attach(0x7FFFFFFF).Attach(graph.AssemblyQualifiedName);
             }
             return c;
