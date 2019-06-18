@@ -1,14 +1,25 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <LangVersion>7.3</LangVersion>
+
   </PropertyGroup>
 
+  <!--
+    reference by https://stackoverflow.com/questions/38476796/how-to-set-net-core-in-if-statement-for-compilation
+  -->
+  <PropertyGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('$(TargetFramework)', '^net\d'))">
+    <DefineConstants>NET_FRAMEWORK</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('$(TargetFramework)', '^netstandard\d'))">
+    <DefineConstants>NET_STANDARD</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('$(TargetFramework)', '^netcoreapp\d'))">
+    <DefineConstants>NET_CORE</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Experiment\IL\**" />
-    <EmbeddedResource Remove="Experiment\IL\**" />
-    <None Remove="Experiment\IL\**" />
+    <Folder Include="Experiment\" />
   </ItemGroup>
-
+  
 </Project>

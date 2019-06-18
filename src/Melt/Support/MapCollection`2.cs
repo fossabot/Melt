@@ -9,7 +9,7 @@ namespace Melt.Support
     using System.Collections;
     using System.ComponentModel;
 
-    internal class MapCollection<TLeft, TRight> : IEnumerable<MapCollection<TLeft, TRight>.Relation>
+    public class MapCollection<TLeft, TRight> : IEnumerable<MapCollection<TLeft, TRight>.Relation>
     {
         private readonly Dictionary<TLeft, TRight> _map_lf;
         private readonly Dictionary<TRight, TLeft> _map_rt;

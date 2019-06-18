@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Melt.Dev", "src\Melt.Dev\Melt.Dev.csproj", "{8710D6CD-0E7A-4C7D-9497-4CF9D5CD8488}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{DC1F1006-63AF-4B56-AEEA-1BED633E5298}"
 	ProjectSection(SolutionItems) = preProject
 		docs\readme.en-us.md = docs\readme.en-us.md
@@ -16,16 +14,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Melt", "src\Melt\Melt.cspro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Melt.UnitTest", "test\Melt.UnitTest\Melt.UnitTest.csproj", "{C1F1D8BB-D5FC-4B19-B4E3-92CE27F42603}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Melt.Dev", "src\Melt.Dev\Melt.Dev.csproj", "{A8FD708A-D949-402E-8A7F-985F9E2768A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8710D6CD-0E7A-4C7D-9497-4CF9D5CD8488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8710D6CD-0E7A-4C7D-9497-4CF9D5CD8488}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8710D6CD-0E7A-4C7D-9497-4CF9D5CD8488}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8710D6CD-0E7A-4C7D-9497-4CF9D5CD8488}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E9E2C9D1-EA56-4620-90CB-20643714F990}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E9E2C9D1-EA56-4620-90CB-20643714F990}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9E2C9D1-EA56-4620-90CB-20643714F990}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -34,6 +30,10 @@ Global
 		{C1F1D8BB-D5FC-4B19-B4E3-92CE27F42603}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1F1D8BB-D5FC-4B19-B4E3-92CE27F42603}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1F1D8BB-D5FC-4B19-B4E3-92CE27F42603}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8FD708A-D949-402E-8A7F-985F9E2768A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8FD708A-D949-402E-8A7F-985F9E2768A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8FD708A-D949-402E-8A7F-985F9E2768A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8FD708A-D949-402E-8A7F-985F9E2768A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
