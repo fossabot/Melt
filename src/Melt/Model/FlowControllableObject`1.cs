@@ -42,6 +42,7 @@ namespace Melt.Model
                     {
                         throw new Exception("The property can't be write.");
                     }
+
                     carrieds.Add(new DelegateCarried(property.GetValue, property.SetValue, property.PropertyType));
                 }
 

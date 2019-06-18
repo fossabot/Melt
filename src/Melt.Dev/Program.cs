@@ -17,14 +17,11 @@ namespace Melt.Dev
     using System.Runtime.Serialization;
     using System.Runtime.Serialization.Formatters.Binary;
     using System.Text;
-    using Melt.Extensions;
     internal class Program
     {
         [STAThread]
         private static void Main(string[] args)
         {
-
-
             Console.ReadKey();
             return;
         }

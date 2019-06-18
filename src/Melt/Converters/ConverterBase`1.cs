@@ -9,7 +9,7 @@ namespace Melt
     using System.Reflection;
     
 
-    public abstract class ConverterBase<T> : IConverter
+    public abstract class ConverterBase<T> : IConverter 
     {
         public ConverterBase()
         {

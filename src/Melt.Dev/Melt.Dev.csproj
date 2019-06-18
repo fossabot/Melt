@@ -63,29 +63,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IL\Class1.cs" />
-    <Compile Include="IL\DynamicMethodHelper.cs" />
-    <Compile Include="IL\FormatProvider.cs" />
-    <Compile Include="IL\ILInstruction.cs" />
-    <Compile Include="IL\ILProvider.cs" />
-    <Compile Include="IL\ILReader.cs" />
-    <Compile Include="IL\ReadableILStringVisitor.cs" />
-    <Compile Include="IL\TokenResolver.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Melt\Melt.csproj">
-      <Project>{596e0cf9-8b6c-42cd-a387-34d6b1ee0d2a}</Project>
-      <Name>Melt</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="IL\Readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

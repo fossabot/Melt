@@ -30,7 +30,7 @@ namespace Melt
         public ConverterPool Install<T>(T inst) where T : IConverter
         {
             if (_converters.Add(inst))
-                Debug.WriteLine($"Register: [{_converters.Count}]({inst})");
+                Debug.WriteLine($"Install: [{_converters.Count}]({inst})");
             return this;
         }
 

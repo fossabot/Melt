@@ -4,9 +4,5 @@
 > The marshaling library without ```Marshal.PtrToStructure``` and ```Marshal.StructureToPtr```.
 
 ##### Todo Converter List
-- [ ] DataSet
-- [ ] DataTable
-- [ ] ISerializable 
 - [ ] ITuple
-- [x] IDictionary
 - [ ] Exception
