@@ -9,36 +9,38 @@ namespace Melt
 
     public partial class ConverterPool
     {
-        private readonly HashSet<IConverter> _converters = new HashSet<IConverter>();
+        private readonly HashSet<IConverter> _converters;
 
         public ConverterPool()
         {
+            _converters = new HashSet<IConverter>();
         }
 
         public Construct Construct()
         {
             return new Construct(this);
         }
-
+        
         public Deconstruct Deconstruct(byte[] bytes)
         {
             return new Deconstruct(bytes, this);
         }
 
 
-        public ConverterPool Register<T>(T inst) where T : IConverter
+        public ConverterPool Install<T>(T inst) where T : IConverter
         {
             if (_converters.Add(inst))
                 Debug.WriteLine($"Register: [{_converters.Count}]({inst})");
             return this;
         }
 
-        public ConverterPool Register<T>() where T : IConverter, new()
+        public ConverterPool Install<T>() where T : IConverter, new()
         {
-            return Register(new T());
+            return Install(new T());
         }
         
 
+        [DebuggerNonUserCode]
         internal IConverter Get(Type type)
         {
             foreach (var c in _converters)
@@ -52,6 +54,7 @@ namespace Melt
             throw new Exception($"Can not convert type '{type}' because converter not found.");
         }
 
+        [DebuggerNonUserCode]
         internal IConverter Get<T>()
         {
             return Get(typeof(T));

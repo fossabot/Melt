@@ -22,7 +22,9 @@ namespace Melt.UnitTest
         [TestMethod]
         public void Enum()
         {
-            p.Register<EnumerationConverter<TestEnum>>();
+#pragma warning disable 0618
+            p.Install<EnumerationConverter<TestEnum>>();
+#pragma warning restore 0618
             var raw = TestEnum.B;
 
             byte[] bytes = p.Construct().Attach(raw);

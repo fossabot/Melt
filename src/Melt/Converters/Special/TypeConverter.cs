@@ -3,6 +3,7 @@
 
 namespace Melt
 {
+    using Melt.Support;
     using System;
 
     public sealed class TypeConverter : ReferenceTypeConverter<Type>

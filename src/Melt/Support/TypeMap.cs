@@ -1,11 +1,8 @@
 ﻿// Author: Orlys
 // Github: https://github.com/Orlys
 
-namespace Melt
+namespace Melt.Support
 {
-    using System;
-    using Melt.Support;
-
     internal static class TypeMap
 	{
         public static bool TryGet(int code, out string typeString)

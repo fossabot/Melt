@@ -1,6 +1,8 @@
 ﻿// Author: Orlys
 // Github: https://github.com/Orlys
 
+using System.Diagnostics;
+
 namespace Melt.Extensions
 {
     public static class ConstructExtension
@@ -20,25 +22,31 @@ namespace Melt.Extensions
             }
         }
 
+        [DebuggerNonUserCode]
         public static Construct ToConstruct<T>(this T obj)
         {
             return Default.Construct().Attach(obj);
         }
 
+        [DebuggerNonUserCode]
         public static Deconstruct ToDeconstruct(this Construct construct)
         {
             return ((byte[])construct).ToDeconstruct();
         }
+
+        [DebuggerNonUserCode]
         public static Deconstruct ToDeconstruct(this byte[] construct)
         {
             return Default.Deconstruct(construct);
         }
 
+        [DebuggerNonUserCode]
         public static Deconstruct Detach<T>(this Deconstruct deconstruct, out T value)
         {
             return deconstruct.Detach(out value, out _);
         }
 
+        [DebuggerNonUserCode]
         public static Deconstruct Detach<T>(this Deconstruct deconstruct, out T value, out int length)
         {
             value = deconstruct.Detach<T>(out length);

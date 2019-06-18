@@ -42,6 +42,7 @@ namespace Melt
             return array;
         }
 
+        [DebuggerNonUserCode]
         public Construct Attach(Type type, object value)
         {
             var c = _pool.Get(type);
@@ -51,6 +52,7 @@ namespace Melt
             return this;
         }
 
+        [DebuggerNonUserCode]
         public Construct Attach<T>(T value)
         {
             return Attach(typeof(T), value);
