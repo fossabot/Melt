@@ -1,9 +1,9 @@
 ﻿// Author: Orlys
 // Github: https://github.com/Orlys
 
-namespace Melt
+namespace Melt.Converters
 {
-    using Melt.Support;
+    using Melt.Internal;
     using System;
 
     public sealed class TypeConverter : ReferenceTypeConverter<Type>

@@ -1,6 +1,7 @@
 ﻿
-namespace Melt
+namespace Melt.Converters
 {
+    using Melt.Extensions;
     using System;
     using System.Collections;
     using System.Collections.Generic;
@@ -9,12 +10,60 @@ namespace Melt
 
     public sealed class ValueTupleConverter : InterfaceTypeConverter<ITuple>
     {
+
+        private ITuple Constructor(Type valueTupleType, object[] args) => Activator.CreateInstance(valueTupleType, args) as ITuple;
+
+        private const byte Max_Valid_Argument_Count = 7;
+
+        private ITuple CreateByArgs(Stack<object> values, int maxStackSize)
+        {
+            var tupleTypes = GetTupleTypes(maxStackSize, out var tupleCount, out var lastTupleElementCount);
+
+            var lastTupleTypeDefinition = tupleTypes.Pop();
+
+            var typeCache = new Stack<Type>(Max_Valid_Argument_Count);
+            var valueCache = new Stack<object>(Max_Valid_Argument_Count);
+            for (int i = 0; i < lastTupleElementCount; i++)
+            {
+                var current = values.Pop();
+                typeCache.Push(current.GetType());
+                valueCache.Push(current);
+            }
+
+            var lastTupleType = lastTupleTypeDefinition.MakeGenericType(typeCache.ToArray());
+            var holder = Constructor(lastTupleType, valueCache.ToArray());
+
+            typeCache.Clear();
+            valueCache.Clear();
+
+            // Tuple<7+TRest>
+            while (tupleTypes.TryPop(out var tupleTypeDefinition))
+            {
+                typeCache.Push(lastTupleType);
+                valueCache.Push(holder);
+
+                for (int i = 0; i < Max_Valid_Argument_Count; i++)
+                {
+                    var c = values.Pop();
+                    typeCache.Push(c.GetType());
+                    valueCache.Push(c);
+                }
+
+                lastTupleType = tupleTypeDefinition.MakeGenericType(typeCache.ToArray());
+                holder = Constructor(lastTupleType, valueCache.ToArray());
+
+                typeCache.Clear();
+                valueCache.Clear();
+            }
+            return holder;
+        }
+
         protected override ITuple OnConvertFromBytes(byte[] bytes, out int length, ConverterPool pool)
         {
             var d = pool.Deconstruct(bytes);
-            var len = d.Detach<int>();
-            var values = new Stack<object>(len);
-            for (int i = 0; i < len -1; i++)
+            var maxStackSize = d.Detach<int>();
+            var values = new Stack<object>(maxStackSize);
+            for (int i = 0; i < maxStackSize -1; i++)
             {
                 var current = d.Detach<object>();
                 values.Push(current);
@@ -22,46 +71,7 @@ namespace Melt
             var last = d.Detach<object>(out length);
             values.Push(last);
 
-            var tupleTypes = GetTupleTypes(len, out var tupleCount, out var lastTupleElementCount);
-
-            var lastTupleTypeDefinition = tupleTypes.Pop();
-            var typeCache = new List<Type>(7);
-            var valueCache = new List<object>(7);
-            for (int i = 0; i < lastTupleElementCount; i++)
-            {
-                var current = values.Pop();
-                typeCache.Add(current.GetType());
-                valueCache.Add(current);
-            }
-            typeCache.Reverse();
-            valueCache.Reverse();
-            var lastTupleType = lastTupleTypeDefinition.MakeGenericType(typeCache.ToArray());
-            var holder = Activator.CreateInstance(lastTupleType, valueCache.ToArray()) as ITuple;
-
-            typeCache.Clear();
-            valueCache.Clear();
-
-
-            while (tupleTypes.TryPop(out var tupleTypeDefinition))// Tuple<7+TRest>
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    var c = values.Pop();
-                    typeCache.Add(c.GetType());
-                    valueCache.Add(c);
-                }
-                typeCache.Reverse();
-                valueCache.Reverse();
-                typeCache.Add(lastTupleType);
-                valueCache.Add(holder);
-
-                lastTupleType = tupleTypeDefinition.MakeGenericType(typeCache.ToArray());
-                holder = Activator.CreateInstance(lastTupleType, valueCache.ToArray()) as ITuple;
-                typeCache.Clear();
-                valueCache.Clear();
-            }
-            return holder;
-            
+            return CreateByArgs(values, maxStackSize);
         }
 
         private static Stack<Type> GetTupleTypes(int length, out int tupleCount, out int lastTupleElementCount)

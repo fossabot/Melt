@@ -1,5 +1,4 @@
-﻿
-namespace Melt
+﻿namespace Melt.Converters
 {
     using System.Globalization;
 
@@ -15,5 +14,4 @@ namespace Melt
             return pool.Construct().Attach(culture.LCID);
         }
     }
-
 }

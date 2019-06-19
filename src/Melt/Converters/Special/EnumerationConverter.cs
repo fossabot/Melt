@@ -1,6 +1,6 @@
 ﻿// Author: Orlys
 // Github: https://github.com/Orlys
-namespace Melt
+namespace Melt.Converters
 {
     using System;
 

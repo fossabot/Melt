@@ -1,17 +1,17 @@
 ﻿// Author: Orlys
 // Github: https://github.com/Orlys
 
-namespace Melt.Support
+namespace Melt.Internal
 {
     internal static class TypeMap
     {
-        public static bool TryGet(int code, out string typeString)
+        internal static bool TryGet(int code, out string typeString)
         {
             var b = s_map.TryGet(code, out var v);
             typeString = b ? v.Right : default;
             return b;
         }
-        public static bool TryGet(string typeString, out int code)
+        internal static bool TryGet(string typeString, out int code)
         {
             var b = s_map.TryGet(typeString, out var v);
             code = b ? v.Left : default;

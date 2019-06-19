@@ -3,6 +3,7 @@
 
 namespace Melt.UnitTest
 {
+    using Melt.Converters;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using System;

@@ -1,10 +1,11 @@
 ﻿// Author: Orlys
 // Github: https://github.com/Orlys
 
-using System.Diagnostics;
-
 namespace Melt.Extensions
 {
+    using System.ComponentModel;
+    using System.Diagnostics;
+
     public static class ConstructExtension
     {
         private static ConverterPool s_pool;
@@ -26,6 +27,12 @@ namespace Melt.Extensions
         public static Construct ToConstruct<T>(this T obj)
         {
             return Default.Construct().Attach(obj);
+        }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public static Construct ToConstruct(this Construct obj)
+        {
+            return obj;
         }
 
         [DebuggerNonUserCode]

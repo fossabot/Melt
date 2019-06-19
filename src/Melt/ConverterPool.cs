@@ -6,6 +6,7 @@ namespace Melt
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using Melt.Converters;
 
     public partial class ConverterPool
     {

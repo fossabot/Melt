@@ -3,6 +3,3 @@
 
 > The marshaling library without ```Marshal.PtrToStructure``` and ```Marshal.StructureToPtr```.
 
-##### Todo Converter List
-- [ ] ITuple
-- [ ] Exception

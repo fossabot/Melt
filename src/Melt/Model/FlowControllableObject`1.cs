@@ -1,6 +1,7 @@
 ﻿
 namespace Melt.Model
 {
+    using Melt.Converters;
     using System;
     using System.Collections.Generic;
     using System.Linq;

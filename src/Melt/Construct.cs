@@ -4,24 +4,11 @@
 namespace Melt
 {
     using Melt.Extensions;
+    using Melt.Internal;
     using System;
     using System.Collections.Generic;
 
     using System.Diagnostics;
-
-    internal class ConstructObjectView
-    {
-        private readonly Construct _construct;
-
-        public ConstructObjectView(Construct construct)
-        {
-            this._construct = construct;
-            this.BinaryStream = (byte[])construct;
-        }
-
-        public byte[] BinaryStream { get; }
-
-    }
 
     [DebuggerTypeProxy(typeof(ConstructObjectView))]
     public sealed class Construct

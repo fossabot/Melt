@@ -1,6 +1,8 @@
 ﻿namespace Melt
 {
-    public partial class ConverterPool
+    using Melt.Converters;
+
+    partial class ConverterPool
     {
 
         public static ConverterPool Global
@@ -13,9 +15,36 @@
                     {
                         lock (s_locker)
                         {
-                            s_instance = new ConverterPool();
+                            s_instance = new ConverterPool()
 
-                            s_instance
+                                // Basic Class Library Type
+                                .Install<CultureInfoConverter>()
+                                .Install<DateTimeConverter>()
+                                .Install<GuidConverter>()
+                                .Install<IPAddressConverter>()
+                                .Install<IPEndPointConverter>()
+                                .Install<RegexConverter>()
+                                .Install<StringBuilderConverter>()
+                                .Install<TimeSpanConverter>()
+                                .Install<UriConverter>()
+
+                                // Collection Types
+                                .Install<ArrayConverter>()
+                                .Install<ListConverter>()
+                                .Install<DictionaryConverter>()
+
+                                // Data Components Types
+                                .Install<DataColumnConverter>()
+                                .Install<DataTableConverter>()
+                                .Install<DataSetConverter>()
+
+                                // Special Types
+                                .Install<EnumerationConverter>()
+                                .Install<ObjectConverter>()
+                                .Install<TypeConverter>()
+                                .Install<ValueTupleConverter>()
+
+                                // Primitive Types
                                 .Install<BooleanConverter>()
                                 .Install<SignedByteConverter>()
                                 .Install<SignedShortConverter>()
@@ -29,30 +58,8 @@
                                 .Install<SingleConverter>()
                                 .Install<DoubleConverter>()
                                 .Install<DecimalConverter>()
-                                .Install<EnumerationConverter>()
+                                .Install<UnicodeStringConverter>();
 
-                                .Install<UnicodeStringConverter>()
-                                .Install<DateTimeConverter>()
-                                .Install<TimeSpanConverter>()
-
-                                .Install<UriConverter>()
-                                .Install<StringBuilderConverter>()
-                                .Install<TypeConverter>()
-                                .Install<GuidConverter>()
-                                .Install<IPAddressConverter>()
-                                .Install<IPEndPointConverter>()
-                                .Install<RegexConverter>()
-
-                                .Install<ArrayConverter>()
-                                .Install<ListConverter>()
-                                .Install<DictionaryConverter>()
-
-                                .Install<CultureInfoConverter>()
-                                .Install<DataColumnConverter>()
-                                .Install<DataTableConverter>()
-                                .Install<DataSetConverter>()
-
-                                .Install<ObjectConverter>();
 
                         }
                     }

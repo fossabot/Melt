@@ -1,7 +1,7 @@
 ﻿// Author: Orlys
 // Github: https://github.com/Orlys
 
-namespace Melt
+namespace Melt.Converters
 {
     public abstract class ValueTypeConverter<T> : ConverterBase<T> where T : struct
     {
