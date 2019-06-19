@@ -7,9 +7,10 @@ namespace Melt
     using Melt.Internal;
     using System;
     using System.Collections.Generic;
-
+    using System.ComponentModel;
     using System.Diagnostics;
 
+    [EditorBrowsable(EditorBrowsableState.Never)]
     [DebuggerTypeProxy(typeof(ConstructObjectView))]
     public sealed class Construct
     {

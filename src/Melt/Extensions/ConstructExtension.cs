@@ -3,6 +3,7 @@
 
 namespace Melt.Extensions
 {
+    using System;
     using System.ComponentModel;
     using System.Diagnostics;
 
@@ -24,17 +25,11 @@ namespace Melt.Extensions
         }
 
         [DebuggerNonUserCode]
-        public static Construct ToConstruct<T>(this T obj)
+        public static Construct ToConstruct(this object obj)
         {
-            return Default.Construct().Attach(obj);
+            return Default.Construct().Attach(obj.GetType(), obj);
         }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public static Construct ToConstruct(this Construct obj)
-        {
-            return obj;
-        }
-
+               
         [DebuggerNonUserCode]
         public static Deconstruct ToDeconstruct(this Construct construct)
         {

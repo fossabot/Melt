@@ -16,19 +16,8 @@ namespace Melt.Dev
     {
         static void Main(string[] args)
         {
-            var kk = (1, 2, 3 ,4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,15);
-            var gg = (100, 101, 102);
-
-            kk.ToConstruct()
-                .Attach(gg)
-                .ToDeconstruct()
-                .Detach(out (int, int, int, int, int, int, int, int, int, int, int, int, int, int, int) vv)
-                .Detach(out (int a, int b, int c) ss);
-
-            var a = new { name = "" };
-
-            Console.WriteLine(vv);
-            Console.WriteLine(ss.a);
+            var g = ConverterPool.Global;
+            var data = 1;
 
             Exit();
         }

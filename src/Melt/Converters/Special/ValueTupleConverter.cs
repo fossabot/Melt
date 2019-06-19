@@ -10,7 +10,12 @@ namespace Melt.Converters
 
     public sealed class ValueTupleConverter : InterfaceTypeConverter<ITuple>
     {
-
+        public override bool CanConvert(Type type)
+        {
+            Console.WriteLine(type);
+            return base.CanConvert(type);
+        }
+        // todo:  expression cache
         private ITuple Constructor(Type valueTupleType, object[] args) => Activator.CreateInstance(valueTupleType, args) as ITuple;
 
         private const byte Max_Valid_Argument_Count = 7;

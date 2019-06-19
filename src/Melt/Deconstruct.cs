@@ -4,7 +4,9 @@
 namespace Melt
 {
     using System;
+    using System.ComponentModel;
 
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public sealed class Deconstruct
     {
         private readonly byte[] _bytes;
