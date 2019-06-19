@@ -22,6 +22,8 @@
 | ```System.Single``` | ```SingleConverter``` |
 | ```System.Decimal``` | ```DecimalConverter``` |
 | ```System.String``` | ```UnicodeStringConverter``` | ```SignedLongConverter``` ```SignedIntegerConverter```
+| ```System.IntPtr``` | ```SignedPointerConverter``` | ```SignedLongConverter```
+| ```System.UIntPtr``` | ```UnsignedPointerConverter``` | ```SignedLongConverter```
 | ```System.Guid``` | ```GuidConverter``` |
 | ```System.DateTime``` | ```DateTimeConverter``` | ```SignedLongConverter``` 
 | ```System.TimeSpan``` | ```TimeSpanConverter``` | ```SignedLongConverter``` 

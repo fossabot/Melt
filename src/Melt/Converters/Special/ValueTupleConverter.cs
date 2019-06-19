@@ -10,10 +10,22 @@ namespace Melt.Converters
 
     public sealed class ValueTupleConverter : InterfaceTypeConverter<ITuple>
     {
+        private static readonly Type[] s_types =
+        {
+            typeof(ValueTuple<>),
+            typeof(ValueTuple<,>),
+            typeof(ValueTuple<,,>),
+            typeof(ValueTuple<,,,>),
+            typeof(ValueTuple<,,,,>),
+            typeof(ValueTuple<,,,,,>),
+            typeof(ValueTuple<,,,,,,>),
+            typeof(ValueTuple<,,,,,,,>)
+        };
+
         public override bool CanConvert(Type type)
         {
-            Console.WriteLine(type);
-            return base.CanConvert(type);
+            var f = base.CanConvert(type) &&((type == typeof(ITuple)) || (type.IsGenericType && s_types.Contains(type.GetGenericTypeDefinition())));
+            return f;
         }
         // todo:  expression cache
         private ITuple Constructor(Type valueTupleType, object[] args) => Activator.CreateInstance(valueTupleType, args) as ITuple;

@@ -10,7 +10,7 @@ namespace Melt.UnitTest
     using System.Text;
 
     [TestClass]
-    public class BclTypeTest
+    public class PlatformTypeTest
     {
         private ConverterPool p;
         public TestContext TestContext { get; set; }

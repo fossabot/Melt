@@ -24,6 +24,8 @@ namespace Melt.Extensions
             }
         }
 
+
+
         [DebuggerNonUserCode]
         public static Construct ToConstruct(this object obj)
         {

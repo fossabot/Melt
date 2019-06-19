@@ -53,6 +53,9 @@ namespace Melt.Extensions
 #endif
             static string ToHAString(this Construct c) => ((byte[])c).ToHAString();
 
+
+        public static byte[] AsBytes(this Construct c) => c;
+
         internal static List<byte> ConcatToList(this byte[] first, params byte[][] other)
         {
             if (other == null && first == null)
