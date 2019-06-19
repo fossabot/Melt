@@ -8,46 +8,44 @@
 
 #### Supported Types
 
-| Type | Converter | Dependency
+| Type | Marshaller | Dependency
 | --- | --- | --- |
-| ```System.Boolean``` | ```BooleanConverter``` |
-| ```System.Char``` | ```CharacterConverter``` |
-| ```System.Byte``` | ```UnsignedByteConverter``` |
-| ```System.UInt16``` | ```UnsignedShortConverter``` |
-| ```System.UInt32``` | ```UnsignedIntegerConverter``` |
-| ```System.UInt64``` | ```UnsignedLongConverter``` |
-| ```System.SByte``` | ```SignedByteConverter``` |
-| ```System.Int16``` | ```SignedShortConverter``` |
-| ```System.Int32``` | ```SignedIntegerConverter``` |
-| ```System.Int64``` | ```SignedLongConverter``` |
-| ```System.Double``` | ```DoubleConverter``` |
-| ```System.Single``` | ```SingleConverter``` |
-| ```System.Decimal``` | ```DecimalConverter``` |
-| ```System.String``` | ```UnicodeStringConverter``` | ```SignedLongConverter``` ```SignedIntegerConverter```
-| ```System.IntPtr``` | ```SignedPointerConverter``` | ```SignedLongConverter```
-| ```System.UIntPtr``` | ```UnsignedPointerConverter``` | ```SignedLongConverter```
-| ```System.Guid``` | ```GuidConverter``` |
-| ```System.DateTime``` | ```DateTimeConverter``` | ```SignedLongConverter``` 
-| ```System.TimeSpan``` | ```TimeSpanConverter``` | ```SignedLongConverter``` 
-| ```System.Uri``` | ```UriConverter``` | ```UnicodeStringConverter```
-| ```System.Text.StringBuilder``` | ```StringBuilderConverter``` | ```UnicodeStringConverter```
-| ```System.Net.IPAddress``` | ```IPAddressConverter``` | ```SignedIntegerConverter```
-| ```System.Net.IPEndPoint``` | ```IPEndPointConverter```| ```IPAddressConverter``` ```SignedIntegerConverter```
-| ```System.Text.RegularExpression.Regex``` | ```RegexConverter``` | ```SignedIntegerConverter``` ```SignedShortConverter``` ```TimeSpanConverter``` ```UnicodeStringConverter```
-| ```System.Globalization.CultureInfo``` | ```CultureInfoConverter``` | ```SignedIntegerConverter``` 
-| ```System.Array``` | ```ArrayConverter``` | ```SignedIntegerConverter``` ```TypeConverter``` ```ObjectConverter```
-| ```System.Collection.IList``` | ```ListConverter``` | ```SignedIntegerConverter``` ```SignedByteConverter``` ```TypeConverter``` ```ObjectConverter```
-| ```System.Collection.IDictionary``` | ```DictionaryConverter``` | ```SignedIntegerConverter``` ```SignedByteConverter``` ```TypeConverter``` ```ObjectConverter```
-| <del>```System.Collection.ICollection```</del> | <del>```CollectionConverter```</del> | <del>```UnsignedByteConverter```</del> <del>```ObjectConverter```</del> <del>```SignedIntegerConverter```</del> <del>```TypeConverter```</del> 
-| ```System.Data.DataColumn``` | ```DataColumnConverter``` | ```TypeConverter``` ```UnicodeStringConverter```
-| ```System.Data.DataTable``` | ```DataTableConverter``` | ```DataColumnConverter``` ```ArrayConverter``` ```ObjectConverter```
-| ```System.Data.DataSet``` | ```DataSetConverter``` | ```DataTableConverter``` ```ArrayConverter```
-| ```System.Object``` | ```ObjectConverter``` | ```*```
-| ```System.Type``` | ```TypeConverter``` | ```UnicodeStringConverter```
-| ```System.Enum``` | ```EnumerationConverter``` | ```TypeConverter``` ```ObjectConverter``` 
-| ```System.ValueTuple<T1...Tn>``` | ```ValueTupleConverter``` | ```ObjectConverter``` ```SignedIntegerConverter```
-| ```System.Enum``` | ```EnumerationConverter<TEnum> where TEnum : Enum``` | ```UnsignedByteConverter``` ```UnsignedShortConverter``` ```UnsignedIntegerConverter``` ```UnsignedLongConverter``` ```SignedByteConverter``` ```SignedShortConverter``` ```SignedIntegerConverter``` ```SignedLongConverter``` 
+| ```System.Boolean``` | ```BooleanMarshaller``` |
+| ```System.Char``` | ```CharacterMarshaller``` |
+| ```System.Byte``` | ```UnsignedByteMarshaller``` |
+| ```System.UInt16``` | ```UnsignedShortMarshaller``` |
+| ```System.UInt32``` | ```UnsignedIntegerMarshaller``` |
+| ```System.UInt64``` | ```UnsignedLongMarshaller``` |
+| ```System.SByte``` | ```SignedByteMarshaller``` |
+| ```System.Int16``` | ```SignedShortMarshaller``` |
+| ```System.Int32``` | ```SignedIntegerMarshaller``` |
+| ```System.Int64``` | ```SignedLongMarshaller``` |
+| ```System.Double``` | ```DoubleMarshaller``` |
+| ```System.Single``` | ```SingleMarshaller``` |
+| ```System.Decimal``` | ```DecimalMarshaller``` |
+| ```System.String``` | ```UnicodeStringMarshaller``` | ```SignedLongMarshaller``` ```SignedIntegerMarshaller```
+| ```System.IntPtr``` | ```SignedPointerMarshaller``` | ```SignedIntegerMarshaller```
+| ```System.UIntPtr``` | ```UnsignedPointerMarshaller``` | ```SignedIntegerMarshaller```
+| ```System.Guid``` | ```GuidMarshaller``` |
+| ```System.DateTime``` | ```DateTimeMarshaller``` | ```SignedLongMarshaller``` 
+| ```System.TimeSpan``` | ```TimeSpanMarshaller``` | ```SignedLongMarshaller``` 
+| ```System.Uri``` | ```UriMarshaller``` | ```UnicodeStringMarshaller```
+| ```System.Text.StringBuilder``` | ```StringBuilderMarshaller``` | ```UnicodeStringMarshaller```
+| ```System.Net.IPAddress``` | ```IPAddressMarshaller``` | ```SignedIntegerMarshaller```
+| ```System.Net.IPEndPoint``` | ```IPEndPointMarshaller```| ```IPAddressMarshaller``` ```SignedIntegerMarshaller```
+| ```System.Text.RegularExpression.Regex``` | ```RegexMarshaller``` | ```SignedIntegerMarshaller``` ```SignedShortMarshaller``` ```TimeSpanMarshaller``` ```UnicodeStringMarshaller```
+| ```System.Globalization.CultureInfo``` | ```CultureInfoMarshaller``` | ```SignedIntegerMarshaller``` 
+| ```System.Array``` | ```ArrayMarshaller``` | ```SignedIntegerMarshaller``` ```TypeMarshaller``` ```ObjectMarshaller```
+| ```System.Collection.IList``` | ```ListMarshaller``` | ```SignedIntegerMarshaller``` ```SignedByteMarshaller``` ```TypeMarshaller``` ```ObjectMarshaller```
+| ```System.Collection.IDictionary``` | ```DictionaryMarshaller``` | ```SignedIntegerMarshaller``` ```SignedByteMarshaller``` ```TypeMarshaller``` ```ObjectMarshaller```
+| ```System.Data.DataColumn``` | ```DataColumnMarshaller``` | ```TypeMarshaller``` ```UnicodeStringMarshaller```
+| ```System.Data.DataTable``` | ```DataTableMarshaller``` | ```DataColumnMarshaller``` ```ArrayMarshaller``` ```ObjectMarshaller```
+| ```System.Data.DataSet``` | ```DataSetMarshaller``` | ```DataTableMarshaller``` ```ArrayMarshaller```
+| ```System.Object``` | ```ObjectMarshaller``` | ```*```
+| ```System.Type``` | ```TypeMarshaller``` | ```UnicodeStringMarshaller```
+| ```System.Enum``` | ```EnumerationMarshaller``` | ```TypeMarshaller``` ```ObjectMarshaller``` 
+| ```System.ValueTuple<T1...Tn>``` | ```ValueTupleMarshaller``` | ```ObjectMarshaller``` ```SignedIntegerMarshaller```
+| ```System.Enum``` | ```EnumerationMarshaller<TEnum> where TEnum : Enum``` | ```UnsignedByteMarshaller``` ```UnsignedShortMarshaller``` ```UnsignedIntegerMarshaller``` ```UnsignedLongMarshaller``` ```SignedByteMarshaller``` ```SignedShortMarshaller``` ```SignedIntegerMarshaller``` ```SignedLongMarshaller``` 
 
  
-
 [Back to home](../../../)

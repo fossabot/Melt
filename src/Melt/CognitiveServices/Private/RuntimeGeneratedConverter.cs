@@ -1,25 +1,26 @@
 ﻿
 namespace Melt.CognitiveServices
 {
-    using Melt.Converters;
+    using Melt.Marshaling;
+    using Melt.Marshaling.Contracts;
     using System.Collections.Generic;
 
     partial class Cognitive<TSelf> where TSelf : Cognitive<TSelf>, new()
     {
-        private sealed class RuntimeGeneratedConverter : ReferenceTypeConverter<TSelf>
+        private sealed class RuntimeGeneratedmarshaller : ReferenceTypeMarshaller<TSelf>
         {
             private readonly List<DelegateCarried> _carrieds;
-            private readonly ConverterPool _pool;
+            private readonly IMarshalingProvider _pool;
 
-
-            internal RuntimeGeneratedConverter(List<DelegateCarried> carrieds, ConverterPool pool)
+            internal RuntimeGeneratedmarshaller(List<DelegateCarried> carrieds, IMarshalingProvider pool)
             {
                 this._carrieds = carrieds;
                 this._pool = pool;
             }
-            public override string Name => typeof(TSelf).FullName + " + " + nameof(RuntimeGeneratedConverter);
 
-            protected override TSelf OnConvertFromBytes(byte[] bytes, out int length, ConverterPool pool)
+            public override string Name => typeof(TSelf).FullName + " + " + nameof(RuntimeGeneratedmarshaller);
+
+            protected override TSelf OnConvertFromBytes(byte[] bytes, out int length, IMarshalingProvider pool)
             {
                 for (int i = s_pipes.Count - 1; i >= 0; i--)
                 {
@@ -45,7 +46,7 @@ namespace Melt.CognitiveServices
                 return obj;
             }
 
-            protected override byte[] OnConvertToBytes(TSelf graph, ConverterPool pool)
+            protected override byte[] OnConvertToBytes(TSelf graph, IMarshalingProvider pool)
             {
                 var c = pool.Construct();
                 foreach (var carried in _carrieds)

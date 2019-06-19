@@ -1,11 +1,10 @@
 ﻿
 namespace Melt.Dev
 {
-    using Melt;
     using Melt.CognitiveServices;
     using Melt.CognitiveServices.Pipeline;
-    using Melt.Extensions;
-
+    using Melt.Marshaling;
+    using Melt.Marshaling.Extensions;
     using System;
     using System.Collections.Generic;
     using System.IO;
@@ -17,30 +16,14 @@ namespace Melt.Dev
 
     class Program
     {
-        [MarshalPipeline(typeof(GZipPipeline))]
-        public class Test : Cognitive<Test>
-        {
-            public Test()
-            {
-
-            }
-
-            public string Name { get; set; }
-
-            protected override IEnumerable<Expression<MemberSelector>> GetFlowControl()
-            {
-                yield return x => Name;
-            }
-        }
-
-
         static void Main(string[] args)
         {
+            var c = Marshallers.Common;
+            var s = c.Construct().Attach((1,2,3,4));
 
-            var t = new Test() { Name = "Yuyu" };
-            byte[] cc = t.ToConstruct();
-            Console.WriteLine(cc.Length);
+            Console.WriteLine(s.ToHAString());
 
+            Console.WriteLine(c.Deconstruct(s).Detach<(int a,int b,int c,int d)>());
 
             Exit();
         }

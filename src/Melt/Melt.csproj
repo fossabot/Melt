@@ -18,8 +18,5 @@
   <PropertyGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('$(TargetFramework)', '^netcoreapp\d'))">
     <DefineConstants>NET_CORE</DefineConstants>
   </PropertyGroup>
-  <ItemGroup>
-    <Folder Include="Experiment\" />
-  </ItemGroup>
   
 </Project>

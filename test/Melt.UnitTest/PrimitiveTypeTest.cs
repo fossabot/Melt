@@ -3,12 +3,13 @@
 
 namespace Melt.UnitTest
 {
+    using Melt.Marshaling;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class PrimitiveTypeTest
     {
-        private ConverterPool p;
+        private IMarshalingProvider p;
         public TestContext TestContext { get; set; }
 
         [TestMethod]
@@ -84,7 +85,7 @@ namespace Melt.UnitTest
         [TestInitialize]
         public void Init()
         {
-            p = ConverterPool.Global;
+            p = Marshallers.Common;
         }
 
         [TestMethod]

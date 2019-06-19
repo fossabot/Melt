@@ -1,5 +1,6 @@
 ﻿// Author: Orlys
 // Github: https://github.com/Orlys
+using Melt.Marshaling;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Melt.UnitTest
@@ -10,7 +11,7 @@ namespace Melt.UnitTest
         [TestMethod]
         public void Mixed()
         {
-            var p = ConverterPool.Global;
+            var p = Marshallers.Common;
             var value = "Test-Object";
             var value2 = 5987;
             var value3 = '#';

@@ -3,7 +3,8 @@
 
 namespace Melt.UnitTest
 {
-    using Melt.Converters;
+    using Melt.Marshaling;
+    using Melt.Marshaling.Models;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using System;
@@ -17,14 +18,14 @@ namespace Melt.UnitTest
             B = ~999
         }
 
-        private ConverterPool p;
+        private IMarshalingProvider p;
         public TestContext TestContext { get; set; }
 
         [TestMethod]
         public void Enum()
         {
 #pragma warning disable 0618
-            p.Install<EnumerationConverter<TestEnum>>();
+            p.Install<EnumerationMarshaller<TestEnum>>();
 #pragma warning restore 0618
             var raw = TestEnum.B;
 
@@ -40,7 +41,7 @@ namespace Melt.UnitTest
         [TestInitialize]
         public void Init()
         {
-            p =  ConverterPool.Global;
+            p =  Marshallers.Common;
         }
 
         [TestMethod]

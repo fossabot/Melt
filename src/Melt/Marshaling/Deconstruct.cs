@@ -1,0 +1,50 @@
+﻿// Author: Orlys
+// Github: https://github.com/Orlys
+
+namespace Melt.Marshaling
+{
+    using System;
+    using System.ComponentModel;
+
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    public sealed class Deconstruct
+    {
+        private readonly byte[] _bytes;
+        private readonly IMarshalingProvider _pool;
+        private int _index = 0;
+
+        internal Deconstruct(byte[] bytes, IMarshalingProvider pool)
+        {
+            _bytes = bytes;
+            _pool = pool;
+        }
+
+        public object Detach(Type type, out int length)
+        {
+            var span = _bytes.AsSpan(_index);
+
+            var marshaller = _pool.Get(type);
+
+            var result = marshaller.FromBytes(span.ToArray(), out var spanLength, _pool);
+
+            _index += spanLength;
+            length = _index;
+            return result;
+        }
+
+        public object Detach(Type type)
+        {
+            return Detach(type, out _);
+        }
+
+        public T Detach<T>(out int length)
+        {
+            return (T)Detach(typeof(T), out length);
+        }
+
+        public T Detach<T>()
+        {
+            return (T)Detach(typeof(T), out _);
+        }
+    }
+}

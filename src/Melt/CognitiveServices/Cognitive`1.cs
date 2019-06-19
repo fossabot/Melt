@@ -2,6 +2,7 @@
 namespace Melt.CognitiveServices
 {
     using Melt.CognitiveServices.Pipeline;
+    using Melt.Marshaling;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -16,27 +17,19 @@ namespace Melt.CognitiveServices
         {
             var type = typeof(TSelf);
 
-            var pipes = type.GetCustomAttributes<MarshalPipelineAttribute>();
+            var pipes = type.GetCustomAttributes<PipelineAttribute>();
             s_pipes = new List<PipelineBase>();
             foreach (var p in pipes)
             {
-                if (p.NotSupported)
+                if (p.IsInvaildAttribute)
                     continue;
 
                 s_pipes.Add(p.Pipeline);
             }
         }
 
-        protected Cognitive() : this(ConverterPool.Global)
+        protected Cognitive()
         {
-
-        }
-
-        protected Cognitive(ConverterPool pool)
-        {
-            if (pool == null)
-                throw new ArgumentNullException(nameof(pool));
-
             var carrieds = new List<DelegateCarried>();
             foreach (var control in GetFlowControl().ToArray())
             {
@@ -72,11 +65,15 @@ namespace Melt.CognitiveServices
                 }
             }
 
-            var converter = new RuntimeGeneratedConverter(carrieds, pool);
-            pool.Install(converter);
+            var pool = MarshalingProvider;
+            var marshaller = new RuntimeGeneratedmarshaller(carrieds, pool);
+            pool.Install(marshaller);
         }
         protected delegate object MemberSelector(TSelf @this);
 
         protected abstract IEnumerable<Expression<MemberSelector>> GetFlowControl();
+
+
+        protected virtual IMarshalingProvider MarshalingProvider => Marshallers.Common;
     }
 }
