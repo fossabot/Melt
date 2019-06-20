@@ -30,7 +30,7 @@ namespace Melt.Marshaling.Extensions
         /// </summary>
         public static string ToHAString(this byte[] bytes, int rowCount = 8)
         {
-#if DEBUG
+
             s_builder.Clear();
             s_builder.Append("{ ");
             var last = bytes.Length - 1;
@@ -47,9 +47,6 @@ namespace Melt.Marshaling.Extensions
             s_builder.Append("}");
 
             return s_builder.ToString();
-#else
-            throw new NotSupportException();
-#endif
         }
 
         /// <summary>

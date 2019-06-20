@@ -13,13 +13,14 @@ namespace Melt.Marshaling.Entity
 
         protected override decimal OnConvertFromBytes(byte[] bytes, IMarshalingProvider pool) => ToDecimal(bytes);
 
-        protected override byte[] OnConvertToBytes(decimal graph, IMarshalingProvider pool) => GetBytes(graph);
+        protected override byte[] OnConvertToBytes(decimal graph, IMarshalingProvider pool) => FromDecimal(graph);
 
         //https://social.technet.microsoft.com/wiki/contents/articles/19055.net-convert-system-decimal-to-and-from-byte-arrays.aspx
-        private byte[] GetBytes(decimal dec)
+        private byte[] FromDecimal(decimal dec)
         {
             //Load four 32 bit integers from the Decimal.GetBits function
             var bits = decimal.GetBits(dec);
+            Console.WriteLine("bit: "+bits.Length);
             //Create a temporary list to hold the bytes
             var bytes = new List<byte>();
             //iterate each 32 bit integer
@@ -35,8 +36,6 @@ namespace Melt.Marshaling.Entity
 
         private decimal ToDecimal(byte[] bytes)
         {
-            if (bytes.Length != SpanSize)
-                throw new Exception("A decimal must be created from exactly 16 bytes");
             var bits = new int[4];
             for (int i = 0; i < 16; i += 4)
             {

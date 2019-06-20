@@ -16,7 +16,13 @@
     <DefineConstants>NET_STANDARD</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('$(TargetFramework)', '^netcoreapp\d'))">
-    <DefineConstants>NET_CORE</DefineConstants>
+    <DefineConstants>TRACE;NET_CORE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\Release\netcoreapp2.2\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>bin\Debug\netcoreapp2.2\</OutputPath>
   </PropertyGroup>
   
 </Project>
