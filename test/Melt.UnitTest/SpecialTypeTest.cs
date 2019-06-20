@@ -4,7 +4,7 @@
 namespace Melt.UnitTest
 {
     using Melt.Marshaling;
-    using Melt.Marshaling.Models;
+    using Melt.Marshaling.Entity;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using System;

@@ -1,6 +1,6 @@
 ﻿namespace Melt.Marshaling
 {
-    using Marshaling.Models;
+    using Marshaling.Entity;
 
     partial class Marshallers
     {
@@ -59,8 +59,6 @@
                                 .Install<DoubleMarshaller>()
                                 .Install<DecimalMarshaller>()
                                 .Install<UnicodeStringMarshaller>();
-
-
                         }
                     }
                     return s_instance;

@@ -7,15 +7,18 @@
 
 #### 支援類型一覽
 
-##### 基本
+##### 基本編組器一覽
+
+> 所有編組器都實作 ```IMarshaller``` 介面
+
 | 編組器 | 詳細資料
 | --- | --- |
-| ```MarshallerBase<T>``` | 提供編組器的基底類別，此類別為抽象類別。
+| ```MarshallerBase<T>``` | 提供編組器基本實作的基底類別，此類別為抽象類別。
 | ```ValueTypeMarshaller<TStruct>``` | 提供對 ```struct``` (System.ValueType) 的部分實作，此類別為抽象類別。
 | ```ReferenceTypeMarshaller<TClass>``` | 提供對 ```class``` 的部分實作，此類別為抽象類別。
 | ```ContractTypeMarshaller<TInterface>``` | 提供對 ```interface``` 的部分實作，此類別為抽象類別。
 
-
+##### 實作之編組器一覽
 | 類型 | 編組器 | 依賴於
 | --- | --- | --- |
 | ```System.Boolean``` | ```BooleanMarshaller``` |
@@ -53,6 +56,7 @@
 | ```System.Type``` | ```TypeMarshaller``` | ```UnicodeStringMarshaller```
 | ```System.Enum``` | ```EnumerationMarshaller``` | ```TypeMarshaller``` ```ObjectMarshaller``` 
 | ```System.Nullable<TStruct>``` | ```NullableMarshaller``` | ```ObjectMarshaller```
+| ```System.Tuple<T1...Tn>``` | ```TupleMarshaller``` | ```ObjectMarshaller``` ```SignedIntegerMarshaller```
 | ```System.ValueTuple<T1...Tn>``` | ```ValueTupleMarshaller``` | ```ObjectMarshaller``` ```SignedIntegerMarshaller```
 | ```System.Enum``` | ```EnumerationMarshaller<TEnum> where TEnum : Enum``` | ```UnsignedByteMarshaller``` ```UnsignedShortMarshaller``` ```UnsignedIntegerMarshaller``` ```UnsignedLongMarshaller``` ```SignedByteMarshaller``` ```SignedShortMarshaller``` ```SignedIntegerMarshaller``` ```SignedLongMarshaller``` 
 

@@ -5,43 +5,33 @@ namespace Melt.Dev
     using Melt.CognitiveServices.Pipeline;
     using Melt.Marshaling;
     using Melt.Marshaling.Contracts;
-
+    using Melt.Marshaling.Entity;
     using Melt.Marshaling.Extensions;
     using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using System.Linq.Expressions;
-    using System.Reflection;
-    using System.Runtime.CompilerServices;
-    using System.Runtime.InteropServices;
-    using System.Text;
+
 
     class Program
     {
+         enum MyEnum
+        {
+            A = -100,
+            D = 66
+        }
 
         static void Main(string[] args)
         {
-            int? a = null;
-            
-            var c = Marshallers.Common;
+            var s = Marshallers.Common;
+            s.Install<TupleMarshaller>();
+            var k = Tuple.Create(10,20);
 
-            var s = c.Construct().Attach(a);
+            var v = s.Construct().Attach(k);
 
-            Console.WriteLine(s.ToHAString());
+            var j = s.Deconstruct(v).Detach<Tuple<int, int>>();
 
-            var d = c.Deconstruct(s);
-            var dat = d.Detach<int?>(out var n);
-
-            Console.WriteLine("has v: "+dat.HasValue);
-            Console.WriteLine("value: "+dat);
-            Console.WriteLine("Len:   "+n);
-
+            Console.WriteLine(j);
             Exit();
         }
-
-
+        
         static void Exit()
         {
             Console.ReadKey();
