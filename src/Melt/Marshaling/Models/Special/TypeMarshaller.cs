@@ -6,14 +6,17 @@ namespace Melt.Marshaling.Models
     using Melt.Marshaling.Contracts;
     using Melt.Marshaling.Internal;
     using System;
+    using System.Diagnostics;
 
     public sealed class TypeMarshaller : ReferenceTypeMarshaller<Type>
-    {
+    {        
+
         public override bool CanMarshal(Type type)
         {
             return type.FullName.Equals("System.Type");
         }
 
+        [DebuggerNonUserCode]
         protected override Type OnConvertFromBytes(byte[] bytes, out int length, IMarshalingProvider pool)
         {
             var d = pool.Deconstruct(bytes);
@@ -27,7 +30,7 @@ namespace Melt.Marshaling.Models
                 return Type.GetType(d.Detach<string>(out length));
             }
 
-            throw new NotSupportedException("Type not difined.");
+            throw new InvalidCastException("Dislocation, unregistered type or not type not matched.");
         }
 
         protected override byte[] OnConvertToBytes(Type graph, IMarshalingProvider pool)

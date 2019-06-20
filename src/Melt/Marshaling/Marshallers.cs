@@ -9,7 +9,11 @@ namespace Melt.Marshaling
     using System.Diagnostics;
     using Melt.Marshaling;
     using Melt.Marshaling.Contracts;
+    using Melt.Marshaling.Internal;
 
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class Marshallers : IMarshalingProvider, ICloneable
     {
         private readonly HashSet<IMarshaller> _marshallers;
@@ -19,11 +23,20 @@ namespace Melt.Marshaling
             _marshallers = new HashSet<IMarshaller>();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public Construct Construct()
         {
             return new Construct(this);
         }
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <returns></returns>
         public Deconstruct Deconstruct(byte[] bytes)
         {
             return new Deconstruct(bytes, this);
@@ -58,7 +71,7 @@ namespace Melt.Marshaling
 
             throw new Exception($"Can not convert type '{type}' because marshaller not found.");
         }
-
+        
         [DebuggerNonUserCode]
         public IMarshaller Get<T>()
         {

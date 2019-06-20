@@ -42,6 +42,7 @@
                                 .Install<ObjectMarshaller>()
                                 .Install<TypeMarshaller>()
                                 .Install<ValueTupleMarshaller>()
+                                .Install<NullableMarshaller>()
 
                                 // Primitive Types
                                 .Install<BooleanMarshaller>()

@@ -52,6 +52,7 @@
 | ```System.Object``` | ```ObjectMarshaller``` | ```*```
 | ```System.Type``` | ```TypeMarshaller``` | ```UnicodeStringMarshaller```
 | ```System.Enum``` | ```EnumerationMarshaller``` | ```TypeMarshaller``` ```ObjectMarshaller``` 
+| ```System.Nullable<TStruct>``` | ```NullableMarshaller``` | ```ObjectMarshaller```
 | ```System.ValueTuple<T1...Tn>``` | ```ValueTupleMarshaller``` | ```ObjectMarshaller``` ```SignedIntegerMarshaller```
 | ```System.Enum``` | ```EnumerationMarshaller<TEnum> where TEnum : Enum``` | ```UnsignedByteMarshaller``` ```UnsignedShortMarshaller``` ```UnsignedIntegerMarshaller``` ```UnsignedLongMarshaller``` ```SignedByteMarshaller``` ```SignedShortMarshaller``` ```SignedIntegerMarshaller``` ```SignedLongMarshaller``` 
 

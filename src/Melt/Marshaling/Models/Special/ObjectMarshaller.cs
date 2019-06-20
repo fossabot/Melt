@@ -6,6 +6,7 @@ namespace Melt.Marshaling.Models
     using Melt.Marshaling.Contracts;
     using Melt.Marshaling.Internal;
     using System;
+    using System.Diagnostics;
 
     public sealed class ObjectMarshaller : ReferenceTypeMarshaller<object>
     {
