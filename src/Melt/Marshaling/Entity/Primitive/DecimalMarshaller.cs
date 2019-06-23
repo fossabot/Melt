@@ -20,7 +20,6 @@ namespace Melt.Marshaling.Entity
         {
             //Load four 32 bit integers from the Decimal.GetBits function
             var bits = decimal.GetBits(dec);
-            Console.WriteLine("bit: "+bits.Length);
             //Create a temporary list to hold the bytes
             var bytes = new List<byte>();
             //iterate each 32 bit integer
