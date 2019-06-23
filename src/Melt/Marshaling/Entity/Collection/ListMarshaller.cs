@@ -3,6 +3,8 @@
     using Melt.Marshaling.Contracts;
     using System;
     using System.Collections;
+    using System.Collections.Generic;
+    using System.Runtime.CompilerServices;
 
     public sealed class ListMarshaller : ContractTypeMarshaller<IList>
     {
@@ -11,7 +13,7 @@
         {
             var c = pool.Construct();
             var type = list.GetType();
-            if(type.IsGenericType)
+            if (type.IsGenericType)
             {
                 var generic = type.GetGenericArguments()[0];    // <TYPE>
                 var typeDef = type.GetGenericTypeDefinition();  // IList<>
@@ -32,7 +34,7 @@
 
                 c.Attach<byte>(1);
                 c.Attach(type);
-                
+
                 c.Attach(list.Count);
                 foreach (object item in list)
                 {
@@ -62,7 +64,7 @@
                         list.Add(d.Detach(generic));
 
                 list.Add(d.Detach(generic, out length));
-                Leave:              
+                Leave:
                 return list;
             }
             else if (flag == 1)
@@ -73,12 +75,12 @@
                 var list = (IList)Activator.CreateInstance(listType);
 
                 if (count == 0)
-                    goto Leave;                
+                    goto Leave;
 
                 if (count != 1)
                     for (int i = 0; i < count - 1; i++)
                         list.Add(d.Detach<object>());
-                
+
                 list.Add(d.Detach<object>(out length));
                 Leave:
                 return list;
@@ -87,5 +89,4 @@
             throw new NotSupportedException();
         }
     }
-    
 }

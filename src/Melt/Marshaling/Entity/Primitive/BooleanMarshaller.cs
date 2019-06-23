@@ -10,8 +10,8 @@ namespace Melt.Marshaling.Entity
     {
         protected override int SpanSize => 1;
 
-        protected override bool OnConvertFromBytes(byte[] bytes, IMarshalingProvider pool) => BitConverter.ToBoolean(bytes, 0);
+        protected override bool OnConvertFromBytes(byte[] bytes, IMarshalingProvider pool) => bytes[0] != default;
 
-        protected override byte[] OnConvertToBytes(bool graph, IMarshalingProvider pool) => BitConverter.GetBytes(graph);
+        protected override byte[] OnConvertToBytes(bool graph, IMarshalingProvider pool) => new byte[] { (byte)(graph ? 1 : 0) };
     }
 }

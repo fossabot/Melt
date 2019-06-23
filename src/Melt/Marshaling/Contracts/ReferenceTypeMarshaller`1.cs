@@ -14,13 +14,13 @@ namespace Melt.Marshaling.Contracts
 
         protected byte[] ConcatLenAndPayload(byte[] payload)
         {
-            var len = BitConverter.GetBytes(payload.Length);
+            var len = System.BitConverter.GetBytes(payload.Length);
             return len.ConcatToArray(payload);
         }
 
         protected byte[] SeparateLenAndPayload(byte[] bytes, out int length)
         {
-            var len = BitConverter.ToInt32(bytes, 0);
+            var len = System.BitConverter.ToInt32(bytes, 0);
             var payload = bytes.AsSpan(s_intSz, len).ToArray();
             length = s_intSz + len;
             return payload;

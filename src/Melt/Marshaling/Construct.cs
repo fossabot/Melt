@@ -5,6 +5,7 @@ namespace Melt.Marshaling
 {
     using Melt.Marshaling.Internal;
     using System;
+    using System.Buffers;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Diagnostics;
