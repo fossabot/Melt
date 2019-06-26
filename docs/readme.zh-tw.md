@@ -58,8 +58,8 @@
 - #### 已實作的支援類型及對應之編組器一覽
   下列編組器皆位於 ```Melt.Marshaling.Entity``` 命名空間中
    
-    | 類型 | 編組器 | 依賴於
-    | --- | --- | --- |
+    | 類型 | 編組器 |
+	| --- | --- | 
     | ```System.Boolean``` | ```BooleanMarshaller``` |
     | ```System.Char``` | ```CharacterMarshaller``` |
     | ```System.Byte``` | ```UnsignedByteMarshaller``` |
@@ -73,34 +73,34 @@
     | ```System.Double``` | ```DoubleMarshaller``` |
     | ```System.Single``` | ```SingleMarshaller``` |
     | ```System.Decimal``` | ```DecimalMarshaller``` |
-    | ```System.String``` | ```UnicodeStringMarshaller``` | ```SignedLongMarshaller``` ```SignedIntegerMarshaller```
-    | ```System.IntPtr``` | ```SignedPointerMarshaller``` | ```SignedIntegerMarshaller```
-    | ```System.UIntPtr``` | ```UnsignedPointerMarshaller``` | ```SignedIntegerMarshaller```
+    | ```System.String``` | ```UnicodeStringMarshaller``` | 
+    | ```System.IntPtr``` | ```SignedPointerMarshaller``` |
+    | ```System.UIntPtr``` | ```UnsignedPointerMarshaller``` |
     | ```System.Guid``` | ```GuidMarshaller``` |
-    | ```System.DateTime``` | ```DateTimeMarshaller``` | ```SignedLongMarshaller``` 
-    | ```System.TimeSpan``` | ```TimeSpanMarshaller``` | ```SignedLongMarshaller``` 
-    | ```System.Uri``` | ```UriMarshaller``` | ```UnicodeStringMarshaller```
-    | ```System.Text.StringBuilder``` | ```StringBuilderMarshaller``` | ```UnicodeStringMarshaller```
-    | ```System.Net.IPAddress``` | ```IPAddressMarshaller``` | ```SignedIntegerMarshaller```
-    | ```System.Net.IPEndPoint``` | ```IPEndPointMarshaller```| ```IPAddressMarshaller``` ```SignedIntegerMarshaller```
-    | ```System.Text.RegularExpression.Regex``` | ```RegexMarshaller``` | ```SignedIntegerMarshaller``` ```SignedShortMarshaller``` ```TimeSpanMarshaller``` ```UnicodeStringMarshaller```
-    | ```System.Globalization.CultureInfo``` | ```CultureInfoMarshaller``` | ```SignedIntegerMarshaller``` 
-    | ```System.Array``` | ```ArrayMarshaller``` | ```SignedIntegerMarshaller``` ```TypeMarshaller``` ```ObjectMarshaller```
-    | ```System.Collection.IList``` | ```ListMarshaller``` | ```SignedIntegerMarshaller``` ```SignedByteMarshaller``` ```TypeMarshaller``` ```ObjectMarshaller```
-    | ```System.Collection.IDictionary``` | ```DictionaryMarshaller``` | ```SignedIntegerMarshaller``` ```SignedByteMarshaller``` ```TypeMarshaller``` ```ObjectMarshaller```
-    | ```System.Data.DataColumn``` | ```DataColumnMarshaller``` | ```TypeMarshaller``` ```UnicodeStringMarshaller```
-    | ```System.Data.DataTable``` | ```DataTableMarshaller``` | ```DataColumnMarshaller``` ```ArrayMarshaller``` ```ObjectMarshaller```
-    | ```System.Data.DataSet``` | ```DataSetMarshaller``` | ```DataTableMarshaller``` ```ArrayMarshaller```
-    | ```System.Object``` | ```ObjectMarshaller``` | ```*```
-    | ```System.Type``` | ```TypeMarshaller``` | ```UnicodeStringMarshaller```
-    | ```System.Enum``` | ```EnumerationMarshaller``` | ```TypeMarshaller``` ```ObjectMarshaller``` 
-    | ```System.Nullable<TStruct>``` | ```NullableMarshaller``` | ```ObjectMarshaller```
-    | ```System.Tuple<T1...Tn>``` | ```TupleMarshaller``` | ```ObjectMarshaller``` ```SignedIntegerMarshaller```
-    | ```System.ValueTuple<T1...Tn>``` | ```ValueTupleMarshaller``` | ```ObjectMarshaller``` ```SignedIntegerMarshaller```
-    | ```System.Enum``` | ```EnumerationMarshaller<TEnum> where TEnum : Enum``` | ```UnsignedByteMarshaller``` ```UnsignedShortMarshaller``` ```UnsignedIntegerMarshaller``` ```UnsignedLongMarshaller``` ```SignedByteMarshaller``` ```SignedShortMarshaller``` ```SignedIntegerMarshaller``` ```SignedLongMarshaller``` 
+    | ```System.DateTime``` | ```DateTimeMarshaller``` |
+    | ```System.TimeSpan``` | ```TimeSpanMarshaller``` |
+    | ```System.Uri``` | ```UriMarshaller``` |
+    | ```System.Text.StringBuilder``` | ```StringBuilderMarshaller``` |
+    | ```System.Net.IPAddress``` | ```IPAddressMarshaller``` |
+    | ```System.Net.IPEndPoint``` | ```IPEndPointMarshaller```|
+    | ```System.Text.RegularExpression.Regex``` | ```RegexMarshaller``` |
+    | ```System.Globalization.CultureInfo``` | ```CultureInfoMarshaller``` |
+    | ```System.Numerics.BigInteger``` | ```BigIntegerMarshaller``` |
+	| ```System.Array``` | ```ArrayMarshaller``` |
+    | ```System.Collection.IList``` | ```ListMarshaller``` |
+    | ```System.Collection.IDictionary``` | ```DictionaryMarshaller``` |
+    | ```System.Data.DataColumn``` | ```DataColumnMarshaller``` | 
+    | ```System.Data.DataTable``` | ```DataTableMarshaller``` | 
+    | ```System.Data.DataSet``` | ```DataSetMarshaller``` |
+    | ```System.Object``` | ```ObjectMarshaller``` |
+    | ```System.Type``` | ```TypeMarshaller``` |
+    | ```System.Enum``` | ```EnumerationMarshaller``` |
+    | ```System.Nullable<TStruct>``` | ```NullableMarshaller``` |
+    | ```System.Tuple<T1...Tn>``` | ```TupleMarshaller``` |
+    | ```System.ValueTuple<T1...Tn>``` | ```ValueTupleMarshaller``` |
+    | ```System.Enum``` | ```EnumerationMarshaller<TEnum> where TEnum : Enum``` | 
 
 - ### 待辦清單
-  - [ ] 透過 BenchmarkDotNet 測量效能後發現 ```Construct``` 的效能不好，之後改用 ```Span<T>``` 跟 ```Memory<T>``` 做改善的動作
   - [ ] 有許多地方需要做記憶體快取
   - [ ] 可自訂的 TypeMap
  

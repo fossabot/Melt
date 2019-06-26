@@ -17,6 +17,7 @@
                             s_instance = new Marshallers()
 
                                 // Basic Class Library Type
+                                .Install<BigIntegerMarshaller>()
                                 .Install<CultureInfoMarshaller>()
                                 .Install<DateTimeMarshaller>()
                                 .Install<GuidMarshaller>()
