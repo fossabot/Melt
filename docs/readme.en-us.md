@@ -9,7 +9,7 @@
 ### How to
 - #### First
   The Melt provides the instance ```Marshallers.Common``` which implemented the interface ```IMarshalingProvider```.  
-  And the instance pre-install some of the marshallers for basically marshaling, see [**here**](#Supported%20%Types%20%And%20%Mapping%20%Marshallers).
+  And the instance pre-install some of the marshallers for basically marshaling, see [**here**](#supported-types-and-mapping-marshallers).
   
 - #### Sample for Marshaling
   ```csharp
@@ -30,6 +30,9 @@
 - #### Implemented customize marshaller
   All of the marshallers implemented the interface ```IMarshaller```.  
   In ordinary, implement or inherit above one can do what you want to do.  
+  - ```ValueTypeMarshaller<TStruct>``` abstract class  
+  - ```ReferenceTypeMarshaller<TClass>``` abstract class  
+  - ```ContractTypeMarshaller<TInterface> ``` abstract class
   
 - #### Advance usage
   Using below of the marshaller contracts to customize your owned marshaller. 
