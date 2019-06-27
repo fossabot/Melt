@@ -1,5 +1,5 @@
 ﻿
-namespace Melt.CognitiveServices.Pipeline
+namespace Melt.Packing.Internal
 {
     using System.IO;
 

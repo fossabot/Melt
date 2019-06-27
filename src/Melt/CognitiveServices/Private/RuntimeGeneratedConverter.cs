@@ -24,7 +24,7 @@ namespace Melt.CognitiveServices
             {
                 for (int i = s_pipes.Count - 1; i >= 0; i--)
                 {
-                    bytes = s_pipes[i].Decode(bytes);
+                    bytes = s_pipes[i].Outflow(bytes);
                 }
 
                 var obj = new TSelf();
@@ -58,7 +58,7 @@ namespace Melt.CognitiveServices
                 byte[] bytes = c;
                 for (int i = 0; i < s_pipes.Count; i++)
                 {
-                    bytes = s_pipes[i].Encode(bytes);
+                    bytes = s_pipes[i].Inflow(bytes);
                 }
                 return bytes;
             }

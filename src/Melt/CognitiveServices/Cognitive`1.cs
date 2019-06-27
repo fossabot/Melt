@@ -3,6 +3,7 @@ namespace Melt.CognitiveServices
 {
     using Melt.CognitiveServices.Pipeline;
     using Melt.Marshaling;
+    using Melt.Packing.Contracts;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -11,14 +12,14 @@ namespace Melt.CognitiveServices
 
     public abstract partial class Cognitive<TSelf> where TSelf : Cognitive<TSelf>, new()
     {
-        private readonly static IList<PipelineBase> s_pipes;
+        private readonly static IList<IPipeline> s_pipes;
 
         static Cognitive()
         {
             var type = typeof(TSelf);
 
             var pipes = type.GetCustomAttributes<PipelineAttribute>();
-            s_pipes = new List<PipelineBase>();
+            s_pipes = new List<IPipeline>();
             foreach (var p in pipes)
             {
                 if (p.IsInvaildAttribute)

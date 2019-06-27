@@ -1,17 +1,19 @@
 ﻿
-namespace Melt.CognitiveServices.Pipeline
+namespace Melt.Packing.Entity
 {
     using System.IO.Compression;
     using System.IO;
+    using Melt.Packing.Contracts;
+    using Melt.Packing.Internal;
 
-    public class GZipPipeline : PipelineBase
+    public class DeflatePipeline : PipelineBase
     {
-        internal protected override byte[] Encode(byte[] bytes)
+        protected override byte[] InflowImpl(byte[] bytes)
         {
             using (var msi = new MemoryStream(bytes))
             using (var mso = new MemoryStream())
             {
-                using (var gs = new GZipStream(mso, CompressionMode.Compress))
+                using (var gs = new DeflateStream(mso, CompressionMode.Compress))
                 {
                     PipelineUtilities.CopyTo(msi, gs);
                 }
@@ -20,12 +22,12 @@ namespace Melt.CognitiveServices.Pipeline
             }
         }
 
-        internal protected override byte[] Decode(byte[] bytes)
+        protected override byte[] OutflowImpl(byte[] bytes)
         {
             using (var msi = new MemoryStream(bytes))
             using (var mso = new MemoryStream())
             {
-                using (var gs = new GZipStream(msi, CompressionMode.Decompress))
+                using (var gs = new DeflateStream(msi, CompressionMode.Decompress))
                 {
                     PipelineUtilities.CopyTo(gs, mso);
                 }
@@ -33,5 +35,7 @@ namespace Melt.CognitiveServices.Pipeline
                 return mso.ToArray();
             }
         }
+
+
     }
 }

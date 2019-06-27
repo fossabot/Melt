@@ -1,6 +1,7 @@
 ﻿
 namespace Melt.CognitiveServices.Pipeline
 {
+    using Melt.Packing.Contracts;
     using System;
 
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
