@@ -80,6 +80,7 @@
   | ```System.Text.StringBuilder``` | ```StringBuilderMarshaller``` 
   | ```System.Net.IPAddress``` | ```IPAddressMarshaller``` 
   | ```System.Net.IPEndPoint``` | ```IPEndPointMarshaller```
+  | ```System.Net.NetworkInformation.PhysicalAddress``` | ```PhysicalAddressMarshaller```
   | ```System.Text.RegularExpression.Regex``` | ```RegexMarshaller``` 
   | ```System.Globalization.CultureInfo``` | ```CultureInfoMarshaller``` 
   | ```System.Numerics.BigInteger``` | ```BigIntegerMarshaller``` 

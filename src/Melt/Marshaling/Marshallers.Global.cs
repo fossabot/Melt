@@ -23,6 +23,7 @@
                                 .Install<GuidMarshaller>()
                                 .Install<IPAddressMarshaller>()
                                 .Install<IPEndPointMarshaller>()
+                                .Install<PhysicalAddressMarshaller>()
                                 .Install<RegexMarshaller>()
                                 .Install<StringBuilderMarshaller>()
                                 .Install<TimeSpanMarshaller>()

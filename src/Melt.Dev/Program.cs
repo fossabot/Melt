@@ -5,12 +5,14 @@ namespace Melt.Dev
     using Melt.Packing;
     using Melt.Packing.Entity;
     using System;
+    using System.Net.NetworkInformation;
     using System.Net.Sockets;
     using System.Threading.Tasks;
     using Marshallers = Melt.Marshaling.Marshallers;
 
     class Program
     {
+
         static void Main(string[] args)
         {
             Task.Run(async () =>
