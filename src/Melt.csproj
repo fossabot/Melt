@@ -12,7 +12,7 @@
     <PackageLicenseUrl>https://github.com/Orlys/Melt/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/Orlys/Melt</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Orlys/Melt</RepositoryUrl>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
     <DelaySign>true</DelaySign>
     <AssemblyOriginatorKeyFile>Melt.snk</AssemblyOriginatorKeyFile>
 
