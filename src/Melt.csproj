@@ -13,8 +13,6 @@
     <PackageProjectUrl>https://github.com/Orlys/Melt</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Orlys/Melt</RepositoryUrl>
     <SignAssembly>false</SignAssembly>
-    <DelaySign>true</DelaySign>
-    <AssemblyOriginatorKeyFile>Melt.snk</AssemblyOriginatorKeyFile>
 
   </PropertyGroup>
 
@@ -35,7 +33,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\Debug\netcoreapp2.2\</OutputPath>
   </PropertyGroup>
   
 </Project>
