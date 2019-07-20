@@ -1,23 +1,13 @@
 version: 1.0.{build}
-
-configuration:
-  - Release
 nuget:
   account_feed: true
   project_feed: true
-build:
-  publish_nuget: true
-  publish_nuget_symbols: true
-  include_nuget_references: true
-  publish_aspnet_core: true
-  parallel: true
-  verbosity: minimal
 build_script:
 - cmd: dotnet publish ./src/Melt.csproj
 test_script:
-- cmd: "cd ./test/Melt.UnitTest\ndotnet restore \ndotnet test"
+- cmd: "cd ./test/\ndotnet restore \ndotnet test"
 artifacts:
-- path: .\src\bin\Debug\publish\
+- path: .\src\bin\Release\netcoreapp2.2\publish\
   name: Melt
   type: WebDeployPackage
 deploy:
