@@ -4,10 +4,13 @@ configuration:
 nuget:
   account_feed: true
   project_feed: true
+
 build_script:
-- cmd: dotnet restore\ndotnet publish ./src/Melt.csproj
+  - cmd: dotnet restore \ndotnet publish ./src/Melt.csproj
+
 test_script:
-- cmd: "cd ./test/\ndotnet restore \ndotnet test"
+  - cmd: "cd ./test/\ndotnet restore \ndotnet test"
+
 artifacts:
 - path: .\src\bin\Release\netcoreapp2.2\publish\
   name: Melt
