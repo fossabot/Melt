@@ -3,7 +3,7 @@
     using Melt.Marshaling.Contracts;
     using System.Numerics;
 
-    public sealed class BigIntegerMarshaller : ValueTypeMarshaller<BigInteger>
+    public sealed class BigIntegerMarshaller : ReferenceTypeMarshaller<BigInteger>
     {
         protected override byte[] OnConvertToBytes(BigInteger graph, IMarshalingProvider pool)
         {
@@ -36,8 +36,5 @@
             return new BigInteger(array);
         }
 
-        protected override int SpanSize => throw new System.NotImplementedException();
-
-        protected override BigInteger OnConvertFromBytes(byte[] bytes, IMarshalingProvider pool) => throw new System.NotImplementedException();
     }
 }

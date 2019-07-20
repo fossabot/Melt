@@ -1,0 +1,40 @@
+version: '1.0.{build}'
+image: 
+  - Visual Studio 2017
+  - Ubuntu
+
+branches:
+  only:
+  - master
+init:
+  - cmd: git config --global core.autocrlf true
+
+before_build:
+  - cmd: dotnet --version
+  - cmd: dotnet restore ./src/Melt.csproj --verbosity m
+
+build_script:
+  - cmd: dotnet publish ./src/Melt.csproj
+
+clone_depth: 1
+
+artifacts:
+ - path: './src/bin/Release/netcoreapp2.2/publish'
+   name: Melt
+   type: WebDeployPackage
+
+test_script:
+  - cmd: dotnet restore ./test/Melt.UnitTest/Melt.UnitTest.csproj --verbosity m
+  - cmd: cd ./test/Melt.UnitTest
+  - cmd: dotnet test
+deploy:
+  - provider: GitHub
+    auth_token:
+      secure: bF3InONSrgUawJPTjpPHNhsgvwv3SvkoWwRcWP4gq+Odk1ZhqNF0A1aQVvDKyAwE
+    artifact: /.*\.zip/           
+    draft: false
+    prerelease: false
+    on:
+      branch: master
+
+on_finish :

@@ -21,6 +21,7 @@ namespace Melt.Marshaling
         }
 
         [DebuggerNonUserCode]
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
         public object Detach(Type type, out int length)
         {
             var span = _bytes.AsSpan(_index);
@@ -35,6 +36,7 @@ namespace Melt.Marshaling
         }
 
         [DebuggerNonUserCode]
+        [EditorBrowsable(EditorBrowsableState.Advanced)]
         public object Detach(Type type)
         {
             return Detach(type, out _);

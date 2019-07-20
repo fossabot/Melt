@@ -1,29 +1,58 @@
 ﻿// Author: Orlys
 // Github: https://github.com/Orlys
-using Melt.Marshaling;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Melt.UnitTest
 {
+    using Melt.Marshaling;
+    using Melt.Marshaling.Contracts;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using FluentAssertions;
+    
+
     [TestClass]
     public class MixedTypeTest
     {
-        [TestMethod]
-        public void Mixed()
+        private IMarshalingProvider p;
+
+        [TestInitialize]
+        public void Init()
         {
-            var p = Marshallers.Common;
-            var value = "Test-Object";
-            var value2 = 5987;
-            var value3 = '#';
+            p = Marshallers.Common;
+            p.Install<TestMarshaller>();
+        }
 
-            byte[] bytes = p.Construct().Attach(value).Attach(value2).Attach(value3);
-            var d = p.Deconstruct(bytes);
+        [TestMethod]
+        public void CustomizeTypeTest()
+        {
+            var raw = new Test { Data1 = 123456, Data2 = "Test-String" };
+            byte[] c = p.Construct().Attach(raw);
 
-            Assert.AreEqual(d.Detach<string>(), value);
-            Assert.AreEqual(d.Detach<int>(), value2);
-            Assert.AreEqual(d.Detach<char>(out var l), value3);
+            var wrapped = p.Deconstruct(c).Detach<Test>(out var len);
 
-            Assert.AreEqual(l, bytes.Length);
+            raw.Should().BeEquivalentTo(wrapped);
+            c.Length.Should().Be(len);
+        }
+    }
+    
+    public class Test
+    {
+        public int Data1 { get; set; }
+        public string Data2 { get; set; }
+    }
+
+    class TestMarshaller : ReferenceTypeMarshaller<Test>
+    {
+        protected override Test OnConvertFromBytes(byte[] bytes, out int length, IMarshalingProvider pool)
+        {
+            var d = pool.Deconstruct(bytes);
+            var obj = new Test();
+            obj.Data1 = d.Detach<int>();
+            obj.Data2 = d.Detach<string>(out length);
+            return obj;
+        }
+        protected override byte[] OnConvertToBytes(Test graph, IMarshalingProvider pool)
+        {
+            return pool.Construct().Attach(graph.Data1).Attach(graph.Data2);
         }
     }
 }

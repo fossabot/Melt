@@ -7,7 +7,7 @@ namespace Melt.Marshaling.Contracts
     using System;
     using System.Runtime.InteropServices;
 
-    public abstract class ReferenceTypeMarshaller<TClass> : MarshallerBase<TClass> where TClass : class
+    public abstract class ReferenceTypeMarshaller<TClass> : MarshallerBase<TClass> //where TClass : class
     {
         private static int s_intSz = Marshal.SizeOf<int>();
         protected override byte[] DefaultValueBytes => MarshallerUtilities.Null;

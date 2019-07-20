@@ -12,7 +12,6 @@ namespace Melt.Dev
 
     class Program
     {
-
         static void Main(string[] args)
         {
             Task.Run(async () =>
@@ -53,8 +52,6 @@ namespace Melt.Dev
             var data = p.Inflow(new byte[] { 0xF7 });
 
             cx.Send(data, data.Length);
-
-
 
             Exit();
 

@@ -43,6 +43,7 @@
                                 .Install<EnumerationMarshaller>()
                                 .Install<ObjectMarshaller>()
                                 .Install<TypeMarshaller>()
+                                .Install<TupleMarshaller>()
                                 .Install<ValueTupleMarshaller>()
                                 .Install<NullableMarshaller>()
 
@@ -60,7 +61,10 @@
                                 .Install<SingleMarshaller>()
                                 .Install<DoubleMarshaller>()
                                 .Install<DecimalMarshaller>()
-                                .Install<UnicodeStringMarshaller>();
+                                .Install<UnicodeStringMarshaller>()
+
+                                .Install<SignedPointerMarshaller>()
+                                .Install<UnsignedPointerMarshaller>();
                         }
                     }
                     return s_instance;
