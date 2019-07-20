@@ -1,5 +1,5 @@
 ﻿
-namespace Melt.Packing.Internal
+namespace Melt.Onion.Packing.Internal
 {
     using System.IO;
 

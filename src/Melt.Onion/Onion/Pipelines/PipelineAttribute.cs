@@ -1,7 +1,7 @@
 ﻿
-namespace Melt.CognitiveServices.Pipeline
+namespace Melt.Onion.Pipeline
 {
-    using Melt.Packing.Contracts;
+    using Melt.Onion.Packing.Contracts;
     using System;
 
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]

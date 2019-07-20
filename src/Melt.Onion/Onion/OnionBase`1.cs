@@ -1,20 +1,20 @@
 ﻿
-namespace Melt.CognitiveServices
+namespace Melt.Onion
 {
-    using Melt.CognitiveServices.Pipeline;
+    using Melt.Onion.Pipeline;
     using Melt.Marshaling;
-    using Melt.Packing.Contracts;
+    using Melt.Onion.Packing.Contracts;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
     using System.Reflection;
 
-    public abstract partial class Cognitive<TSelf> where TSelf : Cognitive<TSelf>, new()
+    public abstract partial class OnionBase<TSelf> where TSelf : OnionBase<TSelf>, new()
     {
         private readonly static IList<IPipeline> s_pipes;
 
-        static Cognitive()
+        static OnionBase()
         {
             var type = typeof(TSelf);
 
@@ -29,7 +29,7 @@ namespace Melt.CognitiveServices
             }
         }
 
-        protected Cognitive()
+        protected OnionBase()
         {
             var carrieds = new List<DelegateCarried>();
             foreach (var control in GetFlowControl().ToArray())

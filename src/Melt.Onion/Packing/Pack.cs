@@ -1,10 +1,8 @@
 ﻿
-namespace Melt.Packing
+namespace Melt.Onion.Packing
 {
-    using Melt.Marshaling;
-    using Melt.Packing.Contracts;
+    using Melt.Onion.Packing.Contracts;
     using System.Collections.Generic;
-    using System.Text;
 
     public sealed class Pack
     {

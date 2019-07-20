@@ -1,13 +1,10 @@
 ﻿
 namespace Melt.Marshaling.Entity
 {
-    using Melt.Common;
     using Melt.Marshaling.Contracts;
     using Melt.Marshaling.Internal;
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     
     public sealed class NullableMarshaller : IMarshaller
     {
@@ -33,7 +30,6 @@ namespace Melt.Marshaling.Entity
 
         private byte[] DefaultValueBytes => MarshallerUtilities.Null;
         
-
         object IMarshaller.FromBytes(byte[] bytes, out int spanLength, IMarshalingProvider pool)
         {
             spanLength = 0;
@@ -48,6 +44,7 @@ namespace Melt.Marshaling.Entity
 
             return pool.Deconstruct(bytes).Detach<object>(out spanLength);
         }
+
         byte[] IMarshaller.ToBytes(object obj, IMarshalingProvider pool)
         {
             if (Equals(obj, null))
@@ -59,8 +56,6 @@ namespace Melt.Marshaling.Entity
             return pool.Construct().Attach(obj);
         }
         
-    
-
         private bool IsDefaultValueBytes(byte[] bytes)
         {
             if (bytes.Length < DefaultValueBytes.Length)

@@ -1,5 +1,5 @@
 ﻿
-namespace Melt.Packing.Contracts
+namespace Melt.Onion.Packing.Contracts
 {
     using System;
     using System.Linq;

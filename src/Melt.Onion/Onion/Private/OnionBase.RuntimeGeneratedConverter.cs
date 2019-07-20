@@ -1,11 +1,11 @@
 ﻿
-namespace Melt.CognitiveServices
+namespace Melt.Onion
 {
     using Melt.Marshaling;
     using Melt.Marshaling.Contracts;
     using System.Collections.Generic;
 
-    partial class Cognitive<TSelf> where TSelf : Cognitive<TSelf>, new()
+    partial class OnionBase<TSelf> where TSelf : OnionBase<TSelf>, new()
     {
         private sealed class RuntimeGeneratedmarshaller : ReferenceTypeMarshaller<TSelf>
         {

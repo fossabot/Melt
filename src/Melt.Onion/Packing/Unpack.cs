@@ -1,7 +1,7 @@
 ﻿
-namespace Melt.Packing
+namespace Melt.Onion.Packing
 {
-    using Melt.Packing.Contracts;
+    using Melt.Onion.Packing.Contracts;
     using System.Collections.Generic;
 
     public sealed class Unpack

@@ -1,9 +1,9 @@
 ﻿
-namespace Melt.CognitiveServices
+namespace Melt.Onion
 {
     using System;
 
-    partial class Cognitive<TSelf> where TSelf : Cognitive<TSelf>, new()
+    partial class OnionBase<TSelf> where TSelf : OnionBase<TSelf>, new()
     {
         private sealed class DelegateCarried
         {
