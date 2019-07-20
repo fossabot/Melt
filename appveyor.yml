@@ -19,7 +19,7 @@ build_script:
 test_script:
 - cmd: "cd ./test/Melt.UnitTest\ndotnet restore \ndotnet test"
 artifacts:
-- path: .\src\bin\Debug\netcoreapp2.2\netcoreapp2.2\publish\
+- path: .\src\bin\Debug\netcoreapp2.2\publish\
   name: Melt
   type: WebDeployPackage
 deploy:
