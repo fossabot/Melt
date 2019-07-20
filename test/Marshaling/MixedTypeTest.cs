@@ -17,8 +17,7 @@ namespace Melt.UnitTest.Marshaling
         [TestInitialize]
         public void Init()
         {
-            p = Marshallers.Common;
-            p.Install<TestMarshaller>();
+            p = Marshallers.Common.Install<TestMarshaller>();
         }
 
         [TestMethod]

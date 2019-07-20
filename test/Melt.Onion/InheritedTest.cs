@@ -17,6 +17,7 @@ namespace Melt.UnitTest.Onion
         [TestInitialize]
         public void Init()
         {
+            var dummy = new Test();
             p = Marshallers.Common;
         }
 
