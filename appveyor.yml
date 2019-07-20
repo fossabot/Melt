@@ -15,7 +15,7 @@ test_script:
   - cmd: dotnet test"
 
 artifacts:
-- path: .\src\bin\Release\netcoreapp2.2\publish\
+- path: .\src\bin\Release\netcoreapp2.2\netcoreapp2.2\publish\
   name: Melt
   type: WebDeployPackage
 deploy:
