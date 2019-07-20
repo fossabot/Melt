@@ -14,8 +14,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Melt", "src\Melt\Melt.cspro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Melt.UnitTest", "test\Melt.UnitTest\Melt.UnitTest.csproj", "{C1F1D8BB-D5FC-4B19-B4E3-92CE27F42603}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Melt.Dev", "src\Melt.Dev\Melt.Dev.csproj", "{A8FD708A-D949-402E-8A7F-985F9E2768A4}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8634DDCD-B442-4AF3-BDA1-B33217DAEA40}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
@@ -36,10 +34,6 @@ Global
 		{C1F1D8BB-D5FC-4B19-B4E3-92CE27F42603}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1F1D8BB-D5FC-4B19-B4E3-92CE27F42603}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1F1D8BB-D5FC-4B19-B4E3-92CE27F42603}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A8FD708A-D949-402E-8A7F-985F9E2768A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A8FD708A-D949-402E-8A7F-985F9E2768A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A8FD708A-D949-402E-8A7F-985F9E2768A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A8FD708A-D949-402E-8A7F-985F9E2768A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

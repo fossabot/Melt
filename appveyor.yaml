@@ -1,7 +1,6 @@
 version: '1.0.{build}'
 image: 
   - Visual Studio 2019
-  - Ubuntu
 
 branches:
   only:
@@ -12,6 +11,11 @@ init:
 
 before_build:
   - cmd: dotnet --version
+  - cmd: echo ============================================================
+  - cmd: dotnet --list-runtimes
+  - cmd: echo ============================================================
+  - cmd: dotnet --list-sdks
+  - cmd: echo ============================================================
   - cmd: dotnet restore ./src/Melt/Melt.csproj --verbosity m
 
 build_script:
