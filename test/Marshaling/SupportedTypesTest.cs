@@ -1,5 +1,5 @@
 ﻿
-namespace Melt.UnitTest
+namespace Melt.UnitTest.Marshaling
 {
     using Melt.Marshaling;
     using Microsoft.VisualStudio.TestTools.UnitTesting;

@@ -1,7 +1,7 @@
 ﻿// Author: Orlys
 // Github: https://github.com/Orlys
 
-namespace Melt.UnitTest
+namespace Melt.UnitTest.Marshaling
 {
     using Melt.Marshaling;
     using Melt.Marshaling.Contracts;
