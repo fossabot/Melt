@@ -13,7 +13,7 @@
     <PackageProjectUrl>https://github.com/Orlys/Melt</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Orlys/Melt</RepositoryUrl>
     <SignAssembly>true</SignAssembly>
-    <DelaySign>false</DelaySign>
+    <DelaySign>true</DelaySign>
     <AssemblyOriginatorKeyFile>Melt.snk</AssemblyOriginatorKeyFile>
 
   </PropertyGroup>
