@@ -12,21 +12,21 @@ init:
 
 before_build:
   - cmd: dotnet --version
-  - cmd: dotnet restore ./src/Melt.csproj --verbosity m
+  - cmd: dotnet restore ./src/Melt/Melt.csproj --verbosity m
 
 build_script:
-  - cmd: dotnet publish ./src/Melt.csproj
+  - cmd: dotnet publish ./src/Melt/Melt.csproj
 
 clone_depth: 1
 
 artifacts:
- - path: './src/bin/Release/netcoreapp2.2/publish'
+ - path: './built/Release/netcoreapp2.2/publish'
    name: Melt
    type: WebDeployPackage
 
 test_script:
-  - cmd: dotnet restore ./test/Melt.UnitTest/Melt.UnitTest.csproj --verbosity m
   - cmd: cd ./test/Melt.UnitTest
+  - cmd: dotnet restore #./test/Melt.UnitTest/Melt.UnitTest.csproj --verbosity m
   - cmd: dotnet test
 deploy:
   - provider: GitHub
