@@ -6,7 +6,8 @@ nuget:
   project_feed: true
 
 build_script:
-  - cmd: dotnet restore \ndotnet publish ./src/Melt.csproj
+  - cmd: dotnet restore
+  - cmd: dotnet publish ./src/Melt.csproj
 
 test_script:
   - cmd: "cd ./test/\ndotnet restore \ndotnet test"
